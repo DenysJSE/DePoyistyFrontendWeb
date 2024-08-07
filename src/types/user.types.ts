@@ -10,3 +10,9 @@ export type TUser = TBase & {
 export type TFullUser = TUser & {
 	favorites: TDish[]
 }
+
+export type TUserForm = {
+	email: string
+	password?: string
+	name?: string
+}

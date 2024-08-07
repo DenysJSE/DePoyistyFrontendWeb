@@ -6,3 +6,8 @@ export type TReview = TBase & {
 	rating: number
 	user: TUser
 }
+
+export type TLeaveReviewData = {
+	text: string
+	rating: number
+}
