@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-stone-900 text-white text-xl
+  @apply bg-bg-dark-mode text-white text-xl
 }
 
 input:-webkit-autofill,
@@ -25,7 +25,7 @@ input:-webkit-autofill:active{
 }
 
 .button {
-  @apply rounded-xl px-16 py-2 font-bold shadow transition duration-300 ease-in-out;
+  @apply rounded-xl px-16 py-2 font-bold;
 
   &:not(&:disabled) {
     @apply hover:shadow-lg;
@@ -33,6 +33,10 @@ input:-webkit-autofill:active{
 
   &.button-light {
     @apply bg-white text-black;
+
+    &:hover {
+      @apply bg-button-hover;
+    }
   }
 
   &.button-dark {

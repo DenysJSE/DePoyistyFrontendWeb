@@ -2,7 +2,7 @@
   @apply w-screen h-screen flex;
 
   > form {
-    @apply rounded-xl shadow-lg shadow-black p-8 py-12 m-auto min-w-[450px] bg-stone-800 text-white flex flex-col gap-7 border border-stone-600;
+    @apply rounded-xl shadow-lg shadow-black p-8 py-12 m-auto min-w-[450px] bg-dark-gray text-white flex flex-col gap-7 border border-dark-mode-border;
 
     > h1 {
       @apply text-center text-4xl font-bold;
@@ -13,7 +13,7 @@
     }
 
     > .error {
-      @apply text-red-500 font-semibold text-lg text-wrap max-w-[350px] text-center m-auto;
+      @apply text-error-red font-semibold text-lg text-wrap max-w-[350px] text-center m-auto;
     }
   }
 }
@@ -25,20 +25,20 @@
     @apply text-lg text-center;
 
     > p > span {
-      @apply text-lime-400 font-bold cursor-pointer;
+      @apply text-lime font-bold cursor-pointer;
 
       &:hover {
-        @apply text-lime-200;
+        @apply text-light-lime;
       }
     }
   }
 
   > hr {
-    @apply h-0.5 bg-stone-600 border-none rounded-full my-4;
+    @apply h-0.5 bg-dark-mode-border border-none rounded-full my-4;
   }
 
   > .googleButton {
-    @apply flex items-center justify-center gap-3 border-2 border-stone-600 rounded-xl py-2 cursor-pointer;
+    @apply flex items-center justify-center gap-3 border-2 border-dark-mode-border rounded-xl py-2 cursor-pointer;
 
     > img {
       @apply w-6;
@@ -49,7 +49,7 @@
     }
 
     &:hover {
-      @apply bg-stone-700;
+      @apply bg-gray;
     }
   }
 }
