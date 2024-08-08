@@ -1,0 +1,32 @@
+.auth {
+  @apply w-screen h-screen flex;
+
+  > form {
+    @apply rounded-xl shadow-lg shadow-black p-8 py-12 m-auto min-w-[450px] bg-stone-800 text-white flex flex-col gap-7 border border-stone-600;
+
+    > h1 {
+      @apply text-center text-3xl font-semibold;
+    }
+
+    > div {
+      @apply flex flex-col gap-4;
+    }
+
+    > .footer {
+      @apply flex flex-col gap-2;
+
+      > p {
+        @apply text-lg text-center;
+
+        > p > span {
+          @apply text-lime-400 font-bold cursor-pointer hover:text-lime-200;
+        }
+      }
+    }
+
+    > .error {
+      @apply text-red-500 font-semibold text-lg text-wrap max-w-[350px] text-center m-auto;
+    }
+  }
+}
+
