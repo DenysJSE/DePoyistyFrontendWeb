@@ -5,23 +5,11 @@
     @apply rounded-xl shadow-lg shadow-black p-8 py-12 m-auto min-w-[450px] bg-stone-800 text-white flex flex-col gap-7 border border-stone-600;
 
     > h1 {
-      @apply text-center text-3xl font-semibold;
+      @apply text-center text-4xl font-bold;
     }
 
     > div {
       @apply flex flex-col gap-4;
-    }
-
-    > .footer {
-      @apply flex flex-col gap-2;
-
-      > p {
-        @apply text-lg text-center;
-
-        > p > span {
-          @apply text-lime-400 font-bold cursor-pointer hover:text-lime-200;
-        }
-      }
     }
 
     > .error {
@@ -30,3 +18,38 @@
   }
 }
 
+.footer {
+  @apply flex flex-col gap-2;
+
+  > p {
+    @apply text-lg text-center;
+
+    > p > span {
+      @apply text-lime-400 font-bold cursor-pointer;
+
+      &:hover {
+        @apply text-lime-200;
+      }
+    }
+  }
+
+  > hr {
+    @apply h-0.5 bg-stone-600 border-none rounded-full my-4;
+  }
+
+  > .googleButton {
+    @apply flex items-center justify-center gap-3 border-2 border-stone-600 rounded-xl py-2 cursor-pointer;
+
+    > img {
+      @apply w-6;
+    }
+
+    > h1 {
+      @apply font-bold text-lg;
+    }
+
+    &:hover {
+      @apply bg-stone-700;
+    }
+  }
+}

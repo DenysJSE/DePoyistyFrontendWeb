@@ -1,4 +1,4 @@
-import { axiosClassic, axiosWithAuth } from '../api/interceptor.ts'
+import { axiosClassic } from '../api/interceptor.ts'
 import { TAuthForm, TAuthResponse } from '../types/auth.types.ts'
 import { removeFromStorage, saveToStorage } from './auth-token.service.ts'
 
@@ -32,10 +32,11 @@ export const authService = {
 		return response
 	},
 
-	async verifyEmail(token: string) {
-		const response = await axiosWithAuth.get('/auth/verify-email', {
-			params: { token }
-		})
-		return response.data
+	async googleLogin() {
+		try {
+			window.location.href = import.meta.env.VITE_API_URL + '/auth/google/login'
+		} catch (e) {
+			console.log(e)
+		}
 	}
 }

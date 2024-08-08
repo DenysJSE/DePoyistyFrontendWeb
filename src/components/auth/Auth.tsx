@@ -1,4 +1,4 @@
-import { useAuthRedirect } from '../../hooks/useAuthRedirect.ts'
+import { useAuthRedirect } from '../../hooks/useAuthRedirect.tsx'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TAuthForm } from '../../types/auth.types.ts'
@@ -6,16 +6,15 @@ import { authService } from '../../services/auth.service.ts'
 import { AxiosError } from 'axios'
 import AuthInput from '../inputs/AuthInput.tsx'
 import { validEmail } from '../../utils/validEmail.ts'
-import Button from '../buttons/Button.tsx'
+import AuthFormButtons from './AuthFormButtons.tsx'
+import Loader from '../Loader.tsx'
 import styles from './Auth.module.scss'
 
 function Auth() {
-	useAuthRedirect()
+	const isLoading = useAuthRedirect()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
 	const [authError, setAuthError] = useState<string>('')
-
-	const buttonTitle = type === 'login' ? 'Login' : 'Register'
 
 	const {
 		register: formRegister,
@@ -41,6 +40,10 @@ function Auth() {
 				setAuthError('An unknown error occurred')
 			}
 		}
+	}
+
+	if (isLoading) {
+		return <Loader />
 	}
 
 	return (
@@ -84,25 +87,8 @@ function Auth() {
 						/>
 					)}
 				</div>
-				<div className={styles.footer}>
-					<Button type='submit' title={buttonTitle} variant='light' />
-					<p>
-						{type === 'login' ? (
-							<p>
-								Don't have an account?{' '}
-								<span onClick={() => setType('register')}>
-									Let's create it!
-								</span>
-							</p>
-						) : (
-							<p>
-								Already have an account?{' '}
-								<span onClick={() => setType('login')}>Let's login!</span>
-							</p>
-						)}
-					</p>
-				</div>
 				{authError.length > 0 && <p className={styles.error}>{authError}</p>}
+				<AuthFormButtons type={type} setType={setType} />
 			</form>
 		</section>
 	)
