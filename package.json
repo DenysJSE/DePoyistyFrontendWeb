@@ -1,7 +1,9 @@
 {
   "name": "depoyisty-frontend-web",
   "private": true,
-  "version": "0.0.0",
+  "author": "DenysJSE (Denys Markevych)",
+  "description": "It is web version of frontend for DePoyisty app",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,10 +13,13 @@
   },
   "dependencies": {
     "axios": "^1.7.3",
+    "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.2",
+    "react-router-dom": "^6.26.0",
     "sass": "^1.77.8"
   },
   "devDependencies": {
