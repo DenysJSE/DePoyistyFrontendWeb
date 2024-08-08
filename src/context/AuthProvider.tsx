@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 import { userService } from '../services/user.service.ts'
+import Loader from '../components/Loader.tsx'
 
 interface AuthContextType {
 	isAuthenticated: boolean
@@ -33,7 +34,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 	}, [])
 
 	if (isLoading) {
-		return <div>Loading...</div>
+		return <Loader />
 	}
 
 	return (

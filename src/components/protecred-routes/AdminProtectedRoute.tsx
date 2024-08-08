@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider.tsx'
 import { Navigate } from 'react-router-dom'
 import NotFoundPage from '../../pages/NotFoundPage.tsx'
+import Loader from '../Loader.tsx'
 
 interface PrivateRouteProps {
 	children: React.ReactNode
@@ -17,7 +18,7 @@ const AdminPrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 	const { isAuthenticated, isAdmin, isLoading } = authContext
 
 	if (isLoading) {
-		return <div>Loading...</div>
+		return <Loader />
 	}
 
 	if (!isAdmin) {
