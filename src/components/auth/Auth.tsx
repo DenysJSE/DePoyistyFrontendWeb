@@ -1,0 +1,97 @@
+import { useAuthRedirect } from '../../hooks/useAuthRedirect.tsx'
+import { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { TAuthForm } from '../../types/auth.types.ts'
+import { authService } from '../../services/auth.service.ts'
+import { AxiosError } from 'axios'
+import AuthInput from '../inputs/AuthInput.tsx'
+import { validEmail } from '../../utils/validEmail.ts'
+import AuthFormButtons from './AuthFormButtons.tsx'
+import Loader from '../Loader.tsx'
+import styles from './Auth.module.scss'
+
+function Auth() {
+	const isLoading = useAuthRedirect()
+
+	const [type, setType] = useState<'login' | 'register'>('login')
+	const [authError, setAuthError] = useState<string>('')
+
+	const {
+		register: formRegister,
+		handleSubmit,
+		formState: { errors },
+		reset
+	} = useForm<TAuthForm>({ mode: 'onSubmit' })
+
+	const onSubmit: SubmitHandler<TAuthForm> = async data => {
+		try {
+			if (type === 'login') {
+				await authService.main('login', data)
+			} else {
+				await authService.main('register', data)
+			}
+			reset()
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				setAuthError(
+					error.response?.data?.message || 'An unknown error occurred'
+				)
+			} else {
+				setAuthError('An unknown error occurred')
+			}
+		}
+	}
+
+	if (isLoading) {
+		return <Loader />
+	}
+
+	return (
+		<section className={styles.auth}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<h1>{type === 'login' ? 'Welcome back!' : "Let's create account"}</h1>
+				<div>
+					<AuthInput
+						formRegister={formRegister}
+						errors={errors}
+						title='email'
+						validationRules={{
+							required: 'Email is required',
+							pattern: {
+								value: validEmail,
+								message: 'Please enter a valid email address'
+							}
+						}}
+					/>
+					<AuthInput
+						formRegister={formRegister}
+						errors={errors}
+						title='password'
+						validationRules={{
+							required: 'Password is required',
+							minLength: {
+								value: 6,
+								message: 'Password mush contain at least 6 characters'
+							}
+						}}
+						type='password'
+					/>
+					{type === 'register' && (
+						<AuthInput
+							formRegister={formRegister}
+							errors={errors}
+							title='name'
+							validationRules={{
+								required: 'Name is required'
+							}}
+						/>
+					)}
+				</div>
+				{authError.length > 0 && <p className={styles.error}>{authError}</p>}
+				<AuthFormButtons type={type} setType={setType} />
+			</form>
+		</section>
+	)
+}
+
+export default Auth
