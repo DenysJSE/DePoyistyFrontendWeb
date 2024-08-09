@@ -6,7 +6,7 @@ function NotFoundPage() {
 			<h1 className='text-6xl'>404 | Not Found :(</h1>
 			<Link
 				to='/'
-				className='bg-white rounded-xl py-3 w-1/2 text-black font-bold text-xl mt-6 hover:bg-button-hover text-center m-auto'
+				className='bg-white rounded-xl py-3 w-1/2 text-black font-bold text-xl mt-6 hover:bg-button-dark-hover text-center m-auto'
 			>
 				Go Home
 			</Link>

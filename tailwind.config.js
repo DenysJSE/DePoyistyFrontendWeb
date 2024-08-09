@@ -1,18 +1,17 @@
-/** @type {import('tailwindcss').Config} */
 const colors = {
-	'error-red': '#ef4444',
-	lime: '#a3e635',
-	'light-lime': '#d9f99d',
-	'button-hover': '#e7e5e4',
-	// dark theme colors:
-	'bg-dark-mode': '#1c1917',
+	'app-text': 'var(--app-text)',
+	background: 'var(--background)',
 	white: '#ffffff',
 	black: '#000000',
-	'dark-gray': '#292524',
-	gray: '#44403c',
-	'light-gray': '#d6d3d1',
-	'dark-mode-border': '#57534e'
-	// light theme colors:
+	error: 'var(--error)',
+	subcolor: 'var(--subcolor)',
+	'subcolor-hover': 'var(--subcolor-hover)',
+	'button-dark-hover': 'var(--button-hover)',
+	'button-light-hover': 'var(--button-light-hover)',
+	'form-bg': 'var(--form)',
+	border: 'var(--border)',
+	placeholder: 'var(--placeholder)',
+	'google-button-hover': 'var(--google-button-hover)'
 }
 
 // const fontSize = {
@@ -42,6 +41,7 @@ const colors = {
 // 	'4xl': '2120px'
 // }
 
+/** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {

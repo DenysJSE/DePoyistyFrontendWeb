@@ -25,7 +25,7 @@ function AuthInput({
 		<div className='flex flex-col gap-1'>
 			<label
 				htmlFor={`form-${title.toLowerCase()}`}
-				className='text-sm text-light-gray'
+				className='text-sm text-placeholder'
 			>
 				{inputTitle}
 			</label>
@@ -37,15 +37,15 @@ function AuthInput({
 				})}
 				placeholder={inputTitle}
 				className={cn(
-					'text-white outline-none px-3 py-2 rounded-xl border border-dark-mode-border bg-dark-gray placeholder:text-light-gray text-lg',
+					'text-app-text outline-none px-3 py-2 rounded-xl border border-border bg-form-bg placeholder:text-placeholder text-lg',
 					{
-						'border-dark-mode-border focus:border-lime': !errorMessage,
-						'border-error-red focus:border-error-red': !!errorMessage
+						'border-dark-mode-border focus:border-subcolor': !errorMessage,
+						'border-error focus:border-error': !!errorMessage
 					}
 				)}
 			/>
 			{errorMessage && (
-				<p className='text-error-red font-semibold text-sm'>{errorMessage}</p>
+				<p className='text-error font-semibold text-sm'>{errorMessage}</p>
 			)}
 		</div>
 	)
