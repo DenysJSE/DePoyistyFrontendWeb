@@ -5,12 +5,15 @@ import './assets/Global.scss'
 import { router } from './config/route.config.tsx'
 import { AuthProvider } from './context/AuthProvider.tsx'
 import Loader from './components/Loader.tsx'
+import { ThemeProvider } from './context/ThemeContext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Suspense fallback={<Loader />}>
 			<AuthProvider>
-				<RouterProvider router={router} />
+				<ThemeProvider>
+					<RouterProvider router={router} />
+				</ThemeProvider>
 			</AuthProvider>
 		</Suspense>
 	</React.StrictMode>

@@ -20,7 +20,8 @@ function Auth() {
 		register: formRegister,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
+		clearErrors
 	} = useForm<TAuthForm>({ mode: 'onSubmit' })
 
 	const onSubmit: SubmitHandler<TAuthForm> = async data => {
@@ -48,7 +49,7 @@ function Auth() {
 
 	return (
 		<section className={styles.auth}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 				<h1>{type === 'login' ? 'Welcome back!' : "Let's create account"}</h1>
 				<div>
 					<AuthInput
@@ -88,7 +89,12 @@ function Auth() {
 					)}
 				</div>
 				{authError.length > 0 && <p className={styles.error}>{authError}</p>}
-				<AuthFormButtons type={type} setType={setType} />
+				<AuthFormButtons
+					type={type}
+					setType={setType}
+					clearErrors={clearErrors}
+					setAuthError={setAuthError}
+				/>
 			</form>
 		</section>
 	)
