@@ -4,9 +4,10 @@ interface IButton {
 	type: 'button' | 'submit' | 'reset'
 	title: string
 	size?: 'small' | 'default' | 'large'
+	onClick?: () => void
 }
 
-function Button({ type, title, size = 'default' }: IButton) {
+function Button({ type, title, size = 'default', onClick }: IButton) {
 	return (
 		<button
 			type={type}
@@ -14,6 +15,7 @@ function Button({ type, title, size = 'default' }: IButton) {
 				'button-small': size === 'small',
 				'button-large': size === 'large'
 			})}
+			onClick={onClick}
 		>
 			{title}
 		</button>

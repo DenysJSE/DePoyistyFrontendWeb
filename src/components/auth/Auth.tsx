@@ -1,5 +1,5 @@
 import { useAuthRedirect } from '../../hooks/useAuthRedirect.tsx'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TAuthForm } from '../../types/auth.types.ts'
 import { authService } from '../../services/auth.service.ts'
@@ -9,12 +9,20 @@ import { validEmail } from '../../utils/validEmail.ts'
 import AuthFormButtons from './AuthFormButtons.tsx'
 import Loader from '../Loader.tsx'
 import styles from './Auth.module.scss'
+import { AuthContext } from '../../context/AuthProvider.tsx'
 
 function Auth() {
 	const isLoading = useAuthRedirect()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
 	const [authError, setAuthError] = useState<string>('')
+
+	const authContext = useContext(AuthContext)
+	if (!authContext) {
+		return <div>Error: AuthContext is undefined</div>
+	}
+
+	const { checkAuth } = authContext
 
 	const {
 		register: formRegister,
@@ -28,8 +36,10 @@ function Auth() {
 		try {
 			if (type === 'login') {
 				await authService.main('login', data)
+				checkAuth()
 			} else {
 				await authService.main('register', data)
+				checkAuth()
 			}
 			reset()
 		} catch (error) {

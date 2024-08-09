@@ -1,0 +1,23 @@
+.header {
+  @apply h-20 px-24 border-b border-border flex justify-between items-center relative;
+
+  > h1 {
+    @apply font-semibold text-2xl;
+  }
+
+  > .userNav {
+    @apply flex items-center gap-8;
+
+    > div {
+      @apply border-2 border-border rounded-xl p-1 px-8 text-lg font-semibold cursor-pointer;
+
+      &:hover {
+        @apply bg-active-element-hover;
+      }
+    }
+  }
+
+  > .modal {
+    @apply w-72 p-2 py-6 absolute top-[68px] right-14 border border-border rounded-lg bg-background;
+  }
+}
