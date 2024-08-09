@@ -10,10 +10,9 @@
   --subcolor-hover: #65a30d;
 
   --button-hover: #262626;
-  --button-light-hover: #e7e5e4;
-  --error: #b91c1c;
-
+  --active-element-hover: #e7e5e4;
   --google-button-hover: #e7e5e4;
+  --error: #b91c1c;
 
   --border: #a1a1aa;
   --form: #fafafa;
@@ -26,11 +25,9 @@
   --subcolor: #a3e635;
   --subcolor-hover: #d9f99d;
 
-  --button-hover: #262626;
-  --button-light-hover: #e7e5e4;
-
+  --button-hover: #e7e5e4;
+  --active-element-hover:  #262626;
   --google-button-hover: #262626;
-
   --error: #ef4444;
 
   --border: #57534e;
@@ -84,5 +81,5 @@ input:-webkit-autofill:active{
 }
 
 .dark .button {
-  @apply bg-white text-black hover:bg-button-light-hover;
+  @apply bg-white text-black hover:bg-button-dark-hover;
 }

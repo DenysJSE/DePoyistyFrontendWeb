@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-import App from '../App.tsx'
 import AuthPage from '../pages/AuthPage.tsx'
 import NotFoundPage from '../pages/NotFoundPage.tsx'
 import FavoriteDishes from '../pages/FavoriteDishes.tsx'
@@ -8,11 +7,17 @@ import AdminPrivateRoute from '../components/protecred-routes/AdminProtectedRout
 import AdminPage from '../pages/AdminPage.tsx'
 import Loader from '../components/Loader.tsx'
 import AuthGoogleCallback from '../components/auth/AuthGoogleCallback.tsx'
+import Home from '../pages/Home.tsx'
+import Layout from '../layout/Layout.tsx'
 
 export const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <App />,
+		element: (
+			<Layout>
+				<Home />
+			</Layout>
+		),
 		errorElement: <NotFoundPage />
 	},
 	{
@@ -31,7 +36,9 @@ export const router = createBrowserRouter([
 		path: '/favorite',
 		element: (
 			<PrivateRoute>
-				<FavoriteDishes />
+				<Layout>
+					<FavoriteDishes />
+				</Layout>
 			</PrivateRoute>
 		)
 	},
@@ -39,7 +46,9 @@ export const router = createBrowserRouter([
 		path: '/admin',
 		element: (
 			<AdminPrivateRoute>
-				<AdminPage />
+				<Layout>
+					<AdminPage />
+				</Layout>
 			</AdminPrivateRoute>
 		)
 	}

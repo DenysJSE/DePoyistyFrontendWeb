@@ -18,4 +18,6 @@ export const saveToStorage = (data: TAuthResponse) => {
 
 export const removeFromStorage = () => {
 	Cookies.remove(ACCESS_TOKEN)
+	Cookies.remove('refreshToken')
+	localStorage.removeItem('user')
 }

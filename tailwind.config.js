@@ -7,7 +7,7 @@ const colors = {
 	subcolor: 'var(--subcolor)',
 	'subcolor-hover': 'var(--subcolor-hover)',
 	'button-dark-hover': 'var(--button-hover)',
-	'button-light-hover': 'var(--button-light-hover)',
+	'active-element-hover': 'var(--active-element-hover)',
 	'form-bg': 'var(--form)',
 	border: 'var(--border)',
 	placeholder: 'var(--placeholder)',
