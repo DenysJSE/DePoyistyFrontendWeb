@@ -8,14 +8,16 @@ import Button from '../components/buttons/Button.tsx'
 import { useNavigate } from 'react-router-dom'
 
 function Header() {
+	const { isShow, setIsShow, ref } = useOutside(false)
+
+	const navigate = useNavigate()
+
 	const authContext = useContext(AuthContext)
 	if (!authContext) {
 		return <div>Error: AuthContext is undefined</div>
 	}
 
 	const { user, logout, isAuthenticated } = authContext
-	const { isShow, setIsShow, ref } = useOutside(false)
-	const navigate = useNavigate()
 
 	const handleLogout = async () => {
 		logout()
@@ -24,12 +26,18 @@ function Header() {
 
 	return (
 		<header className={styles.header} ref={ref}>
-			<h1>DePoyisty</h1>
+			<h1 onClick={() => navigate('/')} className='cursor-pointer'>
+				DePoyisty
+			</h1>
 			{isAuthenticated ? (
 				<>
 					{user && (
 						<div className={styles.userNav}>
-							<Heart size={25} style={{ cursor: 'pointer' }} />
+							<Heart
+								size={25}
+								style={{ cursor: 'pointer' }}
+								onClick={() => navigate('/favorite')}
+							/>
 							<div onClick={() => setIsShow(!isShow)}>{user?.name}</div>
 						</div>
 					)}
