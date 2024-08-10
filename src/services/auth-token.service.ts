@@ -1,6 +1,6 @@
 import { TAuthResponse } from '../types/auth.types.ts'
 import Cookies from 'js-cookie'
-import { ACCESS_TOKEN } from '../constants/constants.ts'
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/constants.ts'
 
 export const getAccessToken = () => {
 	const accessToken = Cookies.get(ACCESS_TOKEN)
@@ -18,6 +18,6 @@ export const saveToStorage = (data: TAuthResponse) => {
 
 export const removeFromStorage = () => {
 	Cookies.remove(ACCESS_TOKEN)
-	Cookies.remove('refreshToken')
+	Cookies.remove(REFRESH_TOKEN)
 	localStorage.removeItem('user')
 }
