@@ -13,6 +13,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 	useEffect(() => {
 		document.body.className = isDark ? 'dark' : 'light'
+		document.body.dataset.theme = isDark ? 'dark' : 'light'
 	}, [isDark])
 
 	return (

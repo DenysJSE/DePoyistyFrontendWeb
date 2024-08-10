@@ -7,6 +7,13 @@ import { AuthProvider } from './context/AuthProvider.tsx'
 import Loader from './components/Loader.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx'
 
+const setInitialTheme = () => {
+	const isDark = localStorage.getItem('isDark') === 'true'
+	document.body.dataset.theme = isDark ? 'dark' : 'light'
+}
+
+setInitialTheme()
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Suspense fallback={<Loader />}>

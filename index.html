@@ -4,9 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: #f4f4f5;
+        color: #000000;
+      }
+      body[data-theme='dark'] {
+        background-color: #1c1917;
+        color: #ffffff;
+      }
+    </style>
     <title>Vite + React + TS</title>
   </head>
-  <body>
+  <body data-theme="light">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
