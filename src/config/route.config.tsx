@@ -9,6 +9,7 @@ import Loader from '../components/Loader.tsx'
 import AuthGoogleCallback from '../components/auth/AuthGoogleCallback.tsx'
 import Home from '../pages/Home.tsx'
 import Layout from '../layout/Layout.tsx'
+import DishCard from '../components/dish-card/DishCard.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -18,6 +19,12 @@ export const router = createBrowserRouter([
 				<Home />
 			</Layout>
 		),
+		children: [
+			{
+				path: '/dish/:dishId',
+				element: <DishCard />
+			}
+		],
 		errorElement: <NotFoundPage />
 	},
 	{

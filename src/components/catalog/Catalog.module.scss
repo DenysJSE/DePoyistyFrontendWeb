@@ -1,5 +1,5 @@
 .catalog {
-  @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto relative;
+  @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0;
 }
 
 .catalogDish {

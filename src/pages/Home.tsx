@@ -1,10 +1,21 @@
 import Catalog from '../components/catalog/Catalog.tsx'
+import { Outlet, useParams } from 'react-router-dom'
 
 function Home() {
+	const { dishId } = useParams()
+
 	return (
-		<div className='flex'>
+		<div className='flex' style={{ height: 'calc(100vh - 80px)' }}>
 			<Catalog />
-			<h1>Dish info</h1>
+			<div className='flex-1 p-4 ml-[600px]'>
+				{dishId ? (
+					<Outlet />
+				) : (
+					<p className='h-full flex items-center justify-center text-2xl font-semibold'>
+						Choose some dish from search to see details about it.
+					</p>
+				)}
+			</div>
 		</div>
 	)
 }

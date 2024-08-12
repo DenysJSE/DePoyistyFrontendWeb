@@ -1,0 +1,10 @@
+.dishCard {
+  @apply p-10 flex flex-col gap-8 relative;
+
+  > div {
+    > img {
+      @apply w-80 rounded-2xl;
+    }
+  }
+
+}

@@ -12,8 +12,8 @@ export const dishService = {
 		return response.data
 	},
 
-	async getDishBySlug(dishSlug: string) {
-		const response = await axiosClassic.get<TDish>(
+	async getDishesBySlug(dishSlug: string) {
+		const response = await axiosClassic.get<TDish[]>(
 			`/dishes/by-slug/${dishSlug}`
 		)
 		return response.data
