@@ -39,6 +39,10 @@ body {
   @apply bg-background text-app-text text-xl;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

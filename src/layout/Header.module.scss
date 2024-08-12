@@ -1,5 +1,5 @@
 .header {
-  @apply h-20 px-24 border-b border-border flex justify-between items-center relative;
+  @apply h-20 px-24 border-b border-border flex justify-between items-center fixed right-0 left-0 bg-background z-50;
 
   > h1 {
     @apply font-semibold text-2xl;

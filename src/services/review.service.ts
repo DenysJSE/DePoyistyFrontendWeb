@@ -32,14 +32,14 @@ export const reviewService = {
 	},
 
 	async getDishRating(dishId: number | string) {
-		const response = await axiosClassic.get<TReview>(
+		const response = await axiosClassic.get<number>(
 			`/reviews/average-for-dish/${dishId}`
 		)
 		return response.data
 	},
 
 	async getRestaurantRating(restaurantId: number | string) {
-		const response = await axiosClassic.get<TReview>(
+		const response = await axiosClassic.get<number>(
 			`/reviews/average-for-restaurant/${restaurantId}`
 		)
 		return response.data
