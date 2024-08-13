@@ -6,14 +6,21 @@ import { dishService } from '../../services/dish.service.ts'
 interface ICatalogDishList {
 	hasUpdated: boolean
 	setHasUpdated: (hasUpdated: boolean) => void
+	searchQuery: string
 }
 
-function CatalogDishList({ hasUpdated, setHasUpdated }: ICatalogDishList) {
+function CatalogDishList({
+	hasUpdated,
+	setHasUpdated,
+	searchQuery
+}: ICatalogDishList) {
 	const [dishes, setDishes] = useState<TDish[]>()
+	const [filteredDishes, setFilteredDishes] = useState<TDish[]>([])
 
 	const fetchDishes = async () => {
 		const response = await dishService.getAllDishes()
 		setDishes(response)
+		setFilteredDishes(response)
 	}
 
 	useEffect(() => {
@@ -26,9 +33,18 @@ function CatalogDishList({ hasUpdated, setHasUpdated }: ICatalogDishList) {
 		}
 	}, [hasUpdated, setHasUpdated])
 
+	useEffect(() => {
+		if (dishes) {
+			const filtered = dishes.filter(dish =>
+				dish.name.toLowerCase().includes(searchQuery.toLowerCase())
+			)
+			setFilteredDishes(filtered)
+		}
+	}, [searchQuery, dishes])
+
 	return (
 		<section className='mt-16 pb-10 flex flex-col gap-4'>
-			{dishes?.map(dish => (
+			{filteredDishes.map(dish => (
 				<CatalogDish
 					key={dish.id}
 					dish={dish}
