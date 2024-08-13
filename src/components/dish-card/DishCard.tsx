@@ -4,9 +4,10 @@ import { TDish } from '../../types/dish.types.ts'
 import { dishService } from '../../services/dish.service.ts'
 import styles from './DishCard.module.scss'
 import DishImage from '../../assets/images/dish-image.webp'
-import { CircleX, Heart, Star } from 'lucide-react'
+import { CircleX, Star } from 'lucide-react'
 import DishReviews from './reviews/DishReviews.tsx'
 import { reviewService } from '../../services/review.service.ts'
+import FavoriteButton from '../buttons/FavoriteButton.tsx'
 
 function DishCard() {
 	const { dishId } = useParams()
@@ -31,7 +32,7 @@ function DishCard() {
 	return (
 		<div className={styles.dishCard}>
 			<div className='absolute right-8 top-4 flex items-center gap-5'>
-				<Heart size={35} className='cursor-pointer' />
+				<FavoriteButton dishId={dish?.id} />
 				<CircleX
 					size={35}
 					onClick={() => navigate('/')}
