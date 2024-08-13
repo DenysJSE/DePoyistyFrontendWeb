@@ -61,6 +61,10 @@ input:-webkit-autofill:active{
   caret-color: #ffffff;
 }
 
+input[type="radio"] {
+  display: none;
+}
+
 .disabled {
   pointer-events: none;
   cursor: default;

@@ -3,20 +3,39 @@ import { useEffect, useState } from 'react'
 import { TDish } from '../../types/dish.types.ts'
 import { dishService } from '../../services/dish.service.ts'
 
-function CatalogDishList() {
+interface ICatalogDishList {
+	hasUpdated: boolean
+	setHasUpdated: (hasUpdated: boolean) => void
+}
+
+function CatalogDishList({ hasUpdated, setHasUpdated }: ICatalogDishList) {
 	const [dishes, setDishes] = useState<TDish[]>()
 
+	const fetchDishes = async () => {
+		const response = await dishService.getAllDishes()
+		setDishes(response)
+	}
+
 	useEffect(() => {
-		const fetchDishes = async () => {
-			const response = await dishService.getAllDishes()
-			setDishes(response)
-		}
 		fetchDishes()
 	}, [])
 
+	useEffect(() => {
+		if (hasUpdated) {
+			fetchDishes()
+		}
+	}, [hasUpdated, setHasUpdated])
+
 	return (
 		<section className='mt-16 pb-10 flex flex-col gap-4'>
-			{dishes?.map(dish => <CatalogDish dish={dish} key={dish.id} />)}
+			{dishes?.map(dish => (
+				<CatalogDish
+					key={dish.id}
+					dish={dish}
+					hasUpdated={hasUpdated}
+					setHasUpdated={setHasUpdated}
+				/>
+			))}
 		</section>
 	)
 }

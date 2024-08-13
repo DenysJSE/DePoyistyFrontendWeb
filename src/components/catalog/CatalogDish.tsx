@@ -2,24 +2,34 @@ import styles from './Catalog.module.scss'
 import { Star } from 'lucide-react'
 import { TDish } from '../../types/dish.types.ts'
 import DishIcon from '../../assets/images/dish-image.webp'
-import { useEffect, useState } from 'react'
-import { reviewService } from '../../services/review.service.ts'
 import { NavLink } from 'react-router-dom'
+import { useCallback, useEffect, useState } from 'react'
+import { reviewService } from '../../services/review.service.ts'
 
 interface ICatalogDish {
 	dish: TDish
+	hasUpdated: boolean
+	setHasUpdated: (hasUpdate: boolean) => void
 }
 
-function CatalogDish({ dish }: ICatalogDish) {
+function CatalogDish({ dish, hasUpdated, setHasUpdated }: ICatalogDish) {
 	const [rating, setRating] = useState<number | undefined>(undefined)
 
-	useEffect(() => {
-		const fetchDishRating = async () => {
-			const rating = await reviewService.getDishRating(dish.id)
-			setRating(rating)
-		}
-		fetchDishRating()
+	const fetchDishRating = useCallback(async () => {
+		const rating = await reviewService.getDishRating(dish.id)
+		setRating(rating)
 	}, [dish.id])
+
+	useEffect(() => {
+		fetchDishRating()
+	}, [dish.id, fetchDishRating])
+
+	useEffect(() => {
+		if (hasUpdated) {
+			fetchDishRating()
+			setHasUpdated(false)
+		}
+	}, [hasUpdated, fetchDishRating, setHasUpdated])
 
 	return (
 		<NavLink to={`/dish/${dish.id}`}>

@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { TDish } from '../../types/dish.types.ts'
 import { dishService } from '../../services/dish.service.ts'
 import styles from './DishCard.module.scss'
 import DishImage from '../../assets/images/dish-image.webp'
-import { reviewService } from '../../services/review.service.ts'
 import { CircleX, Heart, Star } from 'lucide-react'
 import DishReviews from './reviews/DishReviews.tsx'
+import { reviewService } from '../../services/review.service.ts'
 
 function DishCard() {
 	const { dishId } = useParams()
@@ -15,27 +15,18 @@ function DishCard() {
 
 	const navigate = useNavigate()
 
-	useEffect(() => {
+	const getDishData = useCallback(async () => {
 		if (dishId) {
-			const fetchDishRating = async () => {
-				const rating = await reviewService.getDishRating(dishId)
-				setRating(rating)
-			}
-			fetchDishRating()
+			const response = await dishService.getDishById(Number(dishId))
+			setDish(response)
+			const rating = await reviewService.getDishRating(dishId)
+			setRating(rating)
 		}
 	}, [dishId])
 
 	useEffect(() => {
-		const getDishData = async () => {
-			if (dishId) {
-				const response = await dishService.getDishById(dishId)
-				setDish(response)
-			} else {
-				return <h1>Something bad happened with our service :(</h1>
-			}
-		}
 		getDishData()
-	}, [dishId])
+	}, [dishId, getDishData])
 
 	return (
 		<div className={styles.dishCard}>
@@ -75,9 +66,7 @@ function DishCard() {
 					</div>
 				</div>
 			</div>
-
-			{/* Reviews section	*/}
-			<DishReviews dish={dish} />
+			<DishReviews dish={dish} refetchDish={getDishData} />
 			{/* Restaurant location	*/}
 		</div>
 	)
