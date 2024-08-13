@@ -1,0 +1,11 @@
+.catalog {
+  @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0;
+}
+
+.catalogDish {
+  @apply border border-border rounded-2xl p-3 px-3 pr-8 flex items-center gap-6 cursor-pointer;
+
+  &:hover {
+    @apply bg-active-element-hover;
+  }
+}

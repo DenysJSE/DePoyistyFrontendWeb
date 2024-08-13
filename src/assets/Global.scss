@@ -39,6 +39,10 @@ body {
   @apply bg-background text-app-text text-xl;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -55,6 +59,18 @@ input:-webkit-autofill:active{
   -webkit-text-fill-color: #ffffff;
   box-shadow: inset 0 0 20px 20px #292524;
   caret-color: #ffffff;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .disabled {

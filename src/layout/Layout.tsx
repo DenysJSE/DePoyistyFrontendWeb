@@ -5,7 +5,7 @@ function Layout({ children }: { children: ReactNode }) {
 	return (
 		<main>
 			<Header />
-			{children}
+			<div className='pt-20'>{children}</div>
 		</main>
 	)
 }
