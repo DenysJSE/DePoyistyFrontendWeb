@@ -22,7 +22,7 @@ const AuthCallback = () => {
 				console.error('Failed to parse authentication response:', error)
 			}
 		}
-	}, [response, navigate])
+	}, [response, navigate, checkAuth])
 
 	return <Loader />
 }

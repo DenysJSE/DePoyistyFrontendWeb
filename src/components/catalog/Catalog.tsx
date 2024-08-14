@@ -5,12 +5,11 @@ import { useState } from 'react'
 
 function Catalog() {
 	const [searchQuery, setSearchQuery] = useState('')
-	console.log(searchQuery)
 
 	return (
 		<aside className={styles.catalog} style={{ height: 'calc(100vh - 80px)' }}>
 			<Searchbar setSearchQuery={setSearchQuery} />
-			<CatalogDishList />
+			<CatalogDishList searchQuery={searchQuery} />
 		</aside>
 	)
 }

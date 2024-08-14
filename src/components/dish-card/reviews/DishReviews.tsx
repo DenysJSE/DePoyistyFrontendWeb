@@ -28,14 +28,20 @@ function DishReviews({ dish }: IDishReviews) {
 			<h1 className='font-semibold text-3xl'>Reviews:</h1>
 			<div className='flex items-start gap-10'>
 				<div className='flex flex-col min-w-[650px]'>
-					{reviews.map(review => (
-						<DishReviewCard
-							key={review.id}
-							userName={review.user.name}
-							dishRating={review.rating}
-							reviewText={review.text}
-						/>
-					))}
+					{reviews.length > 0 ? (
+						reviews.map(review => (
+							<DishReviewCard
+								key={review.id}
+								userName={review.user.name}
+								dishRating={review.rating}
+								reviewText={review.text}
+							/>
+						))
+					) : (
+						<p className='text-center mt-6 text-2xl font-semibold'>
+							There are no reviews yet
+						</p>
+					)}
 				</div>
 				<LeaveCommentForm dishId={dish.id} />
 			</div>

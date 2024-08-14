@@ -11,7 +11,7 @@ export type AuthContextType = {
 	isAdmin: boolean
 	user: TFullUser | undefined
 	checkAuth: () => void
-	logout: () => {}
+	logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -52,7 +52,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 	}, [])
 
 	if (isLoading) {
-		return <Loader />
+		return <Loader className='h-screen' />
 	}
 
 	return (
