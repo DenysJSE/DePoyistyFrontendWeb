@@ -52,7 +52,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 	}, [])
 
 	if (isLoading) {
-		return <Loader />
+		return <Loader className='h-screen' />
 	}
 
 	return (

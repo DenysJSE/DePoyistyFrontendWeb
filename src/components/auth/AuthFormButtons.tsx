@@ -32,7 +32,7 @@ function AuthFormButtons({
 
 	return (
 		<div className={styles.footer}>
-			<Button type='submit' title={buttonTitle} />
+			<Button type='submit'>{buttonTitle}</Button>
 			<p>
 				{type === 'login' ? (
 					<p>

@@ -19,9 +19,9 @@ function DishReviews({ dish }: IDishReviews) {
 				: Promise.reject('Invalid dish ID')
 	})
 
-	if (!dish) return <NotFoundPage />
 	if (status === 'pending') return <Loader />
-	if (status === 'error') return <div>Error loading reviews</div>
+	if (status === 'error') return <NotFoundPage />
+	if (!dish) return <NotFoundPage />
 
 	return (
 		<div>

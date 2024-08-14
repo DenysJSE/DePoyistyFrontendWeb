@@ -2,6 +2,7 @@ import CatalogDish from './CatalogDish.tsx'
 import { dishService } from '../../services/dish.service.ts'
 import { useQuery } from '@tanstack/react-query'
 import Loader from '../Loader.tsx'
+import NotFoundPage from '../../pages/NotFoundPage.tsx'
 
 // interface ICatalogDishList {
 // 	searchQuery: string
@@ -14,7 +15,7 @@ function CatalogDishList() {
 	})
 
 	if (status === 'pending') return <Loader />
-	if (status === 'error') return <div>Error loading dishes</div>
+	if (status === 'error') return <NotFoundPage />
 
 	return (
 		<section className='mt-16 pb-10 flex flex-col gap-4'>

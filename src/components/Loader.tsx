@@ -1,23 +1,10 @@
-function Loader() {
+import { LoaderCircle } from 'lucide-react'
+import cn from 'clsx'
+
+function Loader({ className }: { className?: string }) {
 	return (
-		<div className='w-screen h-screen grid place-content-center'>
-			<h1 className='text-5xl font-semibold flex items-center space-x-1 m-auto'>
-				<span>Loading</span>
-				<span className='relative mt-2'>
-					<span
-						className='inline-block w-2 h-2 bg-white rounded-full'
-						style={{ animation: 'blink 1s infinite', animationDelay: '0s' }}
-					></span>
-					<span
-						className='inline-block w-2 h-2 bg-white rounded-full ml-1'
-						style={{ animation: 'blink 1s infinite', animationDelay: '0.2s' }}
-					></span>
-					<span
-						className='inline-block w-2 h-2 bg-white rounded-full ml-1'
-						style={{ animation: 'blink 1s infinite', animationDelay: '0.4s' }}
-					></span>
-				</span>
-			</h1>
+		<div className={cn(className, 'w-full h-full grid place-content-center')}>
+			<LoaderCircle size={30} className='animate-spin' />
 		</div>
 	)
 }

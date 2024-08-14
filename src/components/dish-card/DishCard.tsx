@@ -29,7 +29,7 @@ function DishCard() {
 	})
 
 	if (status === 'pending') return <Loader />
-	if (status === 'error') return <div>Error loading dish</div>
+	if (status === 'error') return <NotFoundPage />
 	if (!dish) return <NotFoundPage />
 
 	return (
