@@ -3,34 +3,12 @@ import { Star } from 'lucide-react'
 import { TDish } from '../../types/dish.types.ts'
 import DishIcon from '../../assets/images/dish-image.webp'
 import { NavLink } from 'react-router-dom'
-import { useCallback, useEffect, useState } from 'react'
-import { reviewService } from '../../services/review.service.ts'
 
 interface ICatalogDish {
 	dish: TDish
-	hasUpdated: boolean
-	setHasUpdated: (hasUpdate: boolean) => void
 }
 
-function CatalogDish({ dish, hasUpdated, setHasUpdated }: ICatalogDish) {
-	const [rating, setRating] = useState<number | undefined>(undefined)
-
-	const fetchDishRating = useCallback(async () => {
-		const rating = await reviewService.getDishRating(dish.id)
-		setRating(rating)
-	}, [dish.id])
-
-	useEffect(() => {
-		fetchDishRating()
-	}, [dish.id, fetchDishRating])
-
-	useEffect(() => {
-		if (hasUpdated) {
-			fetchDishRating()
-			setHasUpdated(false)
-		}
-	}, [hasUpdated, fetchDishRating, setHasUpdated])
-
+function CatalogDish({ dish }: ICatalogDish) {
 	return (
 		<NavLink to={`/dish/${dish.id}`}>
 			<div className={styles.catalogDish}>
@@ -42,10 +20,10 @@ function CatalogDish({ dish, hasUpdated, setHasUpdated }: ICatalogDish) {
 					</p>
 					<div className='flex items-center justify-between pt-2'>
 						<h2 className='font-bold'>{dish.price} грн.</h2>
-						{rating !== 0 && (
+						{dish.rating !== 0 && (
 							<h2 className='flex items-center gap-1 font-bold'>
 								<Star size={20} style={{ color: 'gold' }} />
-								{rating}
+								{dish.rating}
 							</h2>
 						)}
 					</div>
