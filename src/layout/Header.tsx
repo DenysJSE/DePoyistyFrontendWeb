@@ -1,23 +1,16 @@
 import styles from './Header.module.scss'
 import { Heart } from 'lucide-react'
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthProvider.tsx'
 import { useOutside } from '../hooks/useOutside.ts'
 import HeaderDropdown from '../components/HeaderDropdown.tsx'
 import Button from '../components/buttons/Button.tsx'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth.ts'
 
 function Header() {
 	const { isShow, setIsShow, ref } = useOutside(false)
 
 	const navigate = useNavigate()
-
-	const authContext = useContext(AuthContext)
-	if (!authContext) {
-		return <div>Error: AuthContext is undefined</div>
-	}
-
-	const { user, logout, isAuthenticated } = authContext
+	const { user, logout, isAuthenticated } = useAuth()
 
 	const handleLogout = async () => {
 		logout()
