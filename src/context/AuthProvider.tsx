@@ -4,7 +4,7 @@ import Loader from '../components/Loader.tsx'
 import { TFullUser } from '../types/user.types.ts'
 import { authService } from '../services/auth.service.ts'
 
-interface AuthContextType {
+export type AuthContextType = {
 	isAuthenticated: boolean
 	setIsAuthenticated: (auth: boolean) => void
 	isLoading: boolean
@@ -52,7 +52,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 	}, [])
 
 	if (isLoading) {
-		return <Loader className='h-screen' />
+		return <Loader />
 	}
 
 	return (

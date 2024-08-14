@@ -1,18 +1,19 @@
 import Button from '../../buttons/Button.tsx'
 import CustomRatingElement from './CustomRatingElement.tsx'
 import { reviewService } from '../../../services/review.service.ts'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { TLeaveReviewData } from '../../../types/review.types.ts'
 import Loader from '../../Loader.tsx'
-import { AuthContext } from '../../../context/AuthProvider.tsx'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../../hooks/useAuth.ts'
 
 interface ILeaveCommentForm {
 	dishId: number | undefined
 }
 
 function LeaveCommentForm({ dishId }: ILeaveCommentForm) {
+	const { isAuthenticated } = useAuth()
 	const navigate = useNavigate()
 	const location = useLocation()
 	const handleGoToAuth = () => {
@@ -45,13 +46,6 @@ function LeaveCommentForm({ dishId }: ILeaveCommentForm) {
 			setRating(0)
 		}
 	})
-
-	const authContext = useContext(AuthContext)
-	if (!authContext) {
-		return <div>Auth Context is undefined</div>
-	}
-
-	const { isAuthenticated } = authContext
 
 	const handleReviewTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
 		setReviewText(e.target.value)

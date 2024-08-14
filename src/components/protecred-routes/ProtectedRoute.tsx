@@ -1,21 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthProvider.tsx'
 import Loader from '../Loader.tsx'
+import { useAuth } from '../../hooks/useAuth.ts'
 
 interface PrivateRouteProps {
 	children: React.ReactNode
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-	const authContext = useContext(AuthContext)
 	const location = useLocation()
-
-	if (authContext === undefined) {
-		throw new Error('PrivateRoute must be used within an AuthProvider')
-	}
-
-	const { isAuthenticated, isLoading } = authContext
+	const { isAuthenticated, isLoading } = useAuth()
 
 	if (isLoading) {
 		return <Loader />

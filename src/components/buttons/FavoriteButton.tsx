@@ -1,42 +1,28 @@
-import { useEffect, useState } from 'react'
 import { userService } from '../../services/user.service.ts'
 import { Heart } from 'lucide-react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useProfile } from '../../hooks/useProfile.ts'
 
-function FavoriteButton({ dishId }: { dishId: number | undefined }) {
-	const [isFavorite, setIsFavorite] = useState<boolean | null>(null)
+function FavoriteButton({ dishId }: { dishId: number }) {
+	const { profile } = useProfile()
 
-	useEffect(() => {
-		const fetchFavoriteStatus = async () => {
-			try {
-				const profile = await userService.getProfile()
-				const favoriteStatus = profile.favorites.some(
-					favorite => favorite.id === dishId
-				)
-				setIsFavorite(favoriteStatus)
-			} catch (error) {
-				console.error('Failed to fetch profile:', error)
-			}
+	const queryClient = useQueryClient()
+
+	const { mutate } = useMutation({
+		mutationKey: ['save to favorite'],
+		mutationFn: () => userService.saveDishToFavorite(dishId),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['get profile'] })
 		}
+	})
 
-		fetchFavoriteStatus()
-	}, [dishId])
-
-	const toggleFavorite = async () => {
-		try {
-			if (dishId) {
-				await userService.saveDishToFavorite(dishId)
-				setIsFavorite(prev => !prev)
-			}
-		} catch (error) {
-			console.error('Failed to toggle favorite:', error)
-		}
-	}
+	const isExist = profile?.favorites.some(favorite => favorite.id === dishId)
 
 	return (
 		<Heart
 			size={35}
-			className={`cursor-pointer ${isFavorite ? 'text-subcolor' : 'text-app-text'}`}
-			onClick={toggleFavorite}
+			className={`cursor-pointer ${isExist ? 'text-subcolor' : 'text-app-text'}`}
+			onClick={() => mutate()}
 		/>
 	)
 }
