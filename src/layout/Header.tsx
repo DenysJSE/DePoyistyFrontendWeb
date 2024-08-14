@@ -48,7 +48,9 @@ function Header() {
 					)}
 				</>
 			) : (
-				<Button type='button' title='Login' onClick={() => navigate('/auth')} />
+				<Button type='button' onClick={() => navigate('/auth')}>
+					Login
+				</Button>
 			)}
 		</header>
 	)

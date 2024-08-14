@@ -1,18 +1,14 @@
 import { Star } from 'lucide-react'
+import { useState } from 'react'
 
 interface ICustomRatingElement {
 	rating: number
 	setRating: (rating: number) => void
-	hover: number | null
-	setHover: (hover: number | null) => void
 }
 
-function CustomRatingElement({
-	rating,
-	setRating,
-	hover,
-	setHover
-}: ICustomRatingElement) {
+function CustomRatingElement({ rating, setRating }: ICustomRatingElement) {
+	const [hover, setHover] = useState<number | null>(null)
+
 	return (
 		<div className='flex items-center gap-1 mt-6'>
 			<h1 className='mr-4'>Your rating:</h1>

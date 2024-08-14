@@ -10,8 +10,10 @@ import AuthFormButtons from './AuthFormButtons.tsx'
 import Loader from '../Loader.tsx'
 import styles from './Auth.module.scss'
 import { AuthContext } from '../../context/AuthProvider.tsx'
+import { useNavigate } from 'react-router-dom'
 
 function Auth() {
+	const navigate = useNavigate()
 	const isLoading = useAuthRedirect()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
@@ -42,6 +44,10 @@ function Auth() {
 				checkAuth()
 			}
 			reset()
+
+			const redirectPath = localStorage.getItem('redirectPath') || '/'
+			navigate(redirectPath)
+			localStorage.removeItem('redirectPath')
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				setAuthError(

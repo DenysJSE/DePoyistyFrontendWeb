@@ -1,19 +1,22 @@
 import cn from 'clsx'
+import { ReactNode } from 'react'
 
 interface IButton {
 	type: 'button' | 'submit' | 'reset'
-	title: string
 	size?: 'small' | 'default' | 'large'
 	onClick?: () => void
 	className?: string
+	disabled?: boolean
+	children: ReactNode
 }
 
 function Button({
 	type,
-	title,
 	size = 'default',
 	onClick,
-	className
+	className,
+	disabled = false,
+	children
 }: IButton) {
 	return (
 		<button
@@ -26,9 +29,10 @@ function Button({
 				},
 				className
 			)}
+			disabled={disabled}
 			onClick={onClick}
 		>
-			{title}
+			{children}
 		</button>
 	)
 }

@@ -2,70 +2,96 @@ import Button from '../../buttons/Button.tsx'
 import CustomRatingElement from './CustomRatingElement.tsx'
 import { reviewService } from '../../../services/review.service.ts'
 import React, { useContext, useState } from 'react'
-import { DishContext } from '../../../context/DishProvider.tsx'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { TLeaveReviewData } from '../../../types/review.types.ts'
+import Loader from '../../Loader.tsx'
+import { AuthContext } from '../../../context/AuthProvider.tsx'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface ILeaveCommentForm {
 	dishId: number | undefined
-	refetchDish: () => void
 }
 
-function LeaveCommentForm({ dishId, refetchDish }: ILeaveCommentForm) {
+function LeaveCommentForm({ dishId }: ILeaveCommentForm) {
+	const navigate = useNavigate()
+	const location = useLocation()
+	const handleGoToAuth = () => {
+		localStorage.setItem('redirectPath', location.pathname)
+		navigate('/auth')
+	}
+
+	const queryClient = useQueryClient()
+	const [rating, setRating] = useState(0)
 	const [reviewText, setReviewText] = useState('')
-	const [rating, setRating] = useState<number>(0)
-	const [hover, setHover] = useState<number | null>(null)
 
-	const dishContext = useContext(DishContext)
-	if (!dishContext) {
-		return <div>Error: AuthContext is undefined</div>
-	}
-
-	const { notifyUpdate } = dishContext
-
-	const handleReviewTextChange = (
-		e: React.ChangeEvent<HTMLTextAreaElement>
-	) => {
-		e.preventDefault()
-		setReviewText(e.target.value)
-	}
-
-	const leaveComment = async () => {
-		if (dishId) {
-			await reviewService.leaveReviewForDish(dishId, {
-				text: reviewText,
-				rating
-			})
+	const mutation = useMutation({
+		mutationFn: (newReview: TLeaveReviewData) => {
+			if (dishId === undefined) {
+				throw new Error('Dish ID is undefined')
+			}
+			return reviewService.leaveReviewForDish(dishId, newReview)
+		},
+		onSuccess: () => {
+			if (dishId !== undefined) {
+				queryClient.invalidateQueries({
+					queryKey: ['dish', dishId]
+				})
+				queryClient.invalidateQueries({ queryKey: ['dishes'] })
+				queryClient.invalidateQueries({
+					queryKey: ['dishReviews', dishId]
+				})
+			}
 			setReviewText('')
 			setRating(0)
-			setHover(null)
-			refetchDish()
-			notifyUpdate(Number(dishId))
 		}
+	})
+
+	const authContext = useContext(AuthContext)
+	if (!authContext) {
+		return <div>Auth Context is undefined</div>
+	}
+
+	const { isAuthenticated } = authContext
+
+	const handleReviewTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+		setReviewText(e.target.value)
+
+	const handleSubmit = () => {
+		mutation.mutate({ text: reviewText, rating })
 	}
 
 	return (
 		<div className='-mt-8 w-full'>
 			<h1 className='font-semibold text-2xl'>Leave your comment:</h1>
-			<CustomRatingElement
-				rating={rating}
-				setRating={setRating}
-				hover={hover}
-				setHover={setHover}
-			/>
-			<textarea
-				name='Comment'
-				value={reviewText}
-				onChange={handleReviewTextChange}
-				placeholder='Write your comment...'
-				id='comment'
-				className='w-full min-h-32 mt-6 rounded-xl outline-none text-black p-2 px-4 text-lg resize-none'
-			/>
-			{reviewText.length !== 0 && rating !== 0 && (
-				<Button
-					type='button'
-					title='Publish comment'
-					className='w-full mt-2'
-					onClick={leaveComment}
-				/>
+			{isAuthenticated ? (
+				<>
+					<CustomRatingElement rating={rating} setRating={setRating} />
+					<textarea
+						name='Comment'
+						value={reviewText}
+						onChange={handleReviewTextChange}
+						placeholder='Write your comment...'
+						id='comment'
+						className='w-full min-h-32 mt-6 rounded-xl outline-none text-black p-2 px-4 text-lg resize-none'
+					/>
+					{reviewText.length !== 0 && rating !== 0 && (
+						<Button
+							type='button'
+							className='w-full mt-2'
+							onClick={handleSubmit}
+							disabled={mutation.isPending}
+						>
+							{mutation.isPending ? <Loader /> : 'Publish comment'}
+						</Button>
+					)}
+				</>
+			) : (
+				<div className='mt-6 flex flex-col items-center gap-3'>
+					<h1>Please login to leave some comment</h1>
+					<Button type='button' size='small' onClick={handleGoToAuth}>
+						Login
+					</Button>
+				</div>
 			)}
 		</div>
 	)

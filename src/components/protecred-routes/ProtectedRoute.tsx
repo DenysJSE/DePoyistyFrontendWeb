@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthProvider.tsx'
 import Loader from '../Loader.tsx'
 
@@ -9,6 +9,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 	const authContext = useContext(AuthContext)
+	const location = useLocation()
 
 	if (authContext === undefined) {
 		throw new Error('PrivateRoute must be used within an AuthProvider')
@@ -20,7 +21,12 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 		return <Loader />
 	}
 
-	return isAuthenticated ? <>{children}</> : <Navigate to='/auth' />
+	if (!isAuthenticated) {
+		localStorage.setItem('redirectPath', location.pathname)
+		return <Navigate to='/auth' />
+	}
+
+	return <>{children}</>
 }
 
 export default PrivateRoute
