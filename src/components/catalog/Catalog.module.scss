@@ -1,9 +1,14 @@
 .catalog {
-  @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0;
+  height: calc(100vh - var(--header-height));
+  @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0 max-xl:w-[450px]  max-sm:px-4 max-sm:pt-4 max-sm:top-16;
+
+  @media (max-width: 992px) {
+    @apply w-full border-none;
+  }
 }
 
 .catalogDish {
-  @apply border border-border rounded-2xl p-3 px-3 pr-8 flex items-center gap-6 cursor-pointer;
+  @apply border border-border rounded-2xl p-3 px-3 pr-8 flex items-center gap-6 cursor-pointer max-xs:gap-3;
 
   &:hover {
     @apply bg-active-element-hover;

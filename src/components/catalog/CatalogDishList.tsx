@@ -22,7 +22,7 @@ function CatalogDishList({ searchQuery }: ICatalogDishList) {
 	)
 
 	return (
-		<section className='mt-16 pb-10 flex flex-col gap-4'>
+		<section className='mt-16 pb-10 flex flex-col gap-4 max-sm:mt-14 max-sm:gap-3'>
 			{filteredDishes.length > 0 ? (
 				filteredDishes.map(dish => <CatalogDish key={dish.id} dish={dish} />)
 			) : (

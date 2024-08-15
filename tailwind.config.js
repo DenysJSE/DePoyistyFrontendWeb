@@ -36,7 +36,8 @@ const screens = {
 	'max-sm': { max: '768px' },
 	'max-md': { max: '992px' },
 	'max-lg': { max: '1200px' },
-	'max-xl': { max: '1399px' }
+	'max-xl': { max: '1399px' },
+	'max-2xl': { max: '1920px' }
 }
 
 /** @type {import('tailwindcss').Config} */
