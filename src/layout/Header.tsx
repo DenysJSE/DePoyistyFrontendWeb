@@ -27,9 +27,9 @@ function Header() {
 					{user && (
 						<div className={styles.userNav}>
 							<Heart
-								size={25}
 								style={{ cursor: 'pointer' }}
 								onClick={() => navigate('/favorite')}
+								className='w-6 max-sm:w-5'
 							/>
 							<div onClick={() => setIsShow(!isShow)}>{user?.name}</div>
 						</div>

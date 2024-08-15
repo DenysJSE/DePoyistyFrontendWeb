@@ -30,16 +30,14 @@ const colors = {
 // 	'8xl': '6.9rem',
 // 	'9xl': '9.2rem'
 // }
-//
-// const screens = {
-// 	sm: '640px',
-// 	md: '768px',
-// 	lg: '1024px',
-// 	xl: '1280px',
-// 	'2xl': '1536px',
-// 	'3xl': '1850px',
-// 	'4xl': '2120px'
-// }
+
+const screens = {
+	'max-xs': { max: '480px' },
+	'max-sm': { max: '768px' },
+	'max-md': { max: '992px' },
+	'max-lg': { max: '1200px' },
+	'max-xl': { max: '1399px' }
+}
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -47,7 +45,7 @@ export default {
 	theme: {
 		colors,
 		// fontSize,
-		// screens,
+		screens,
 		extend: {
 			keyframes: {
 				blink: {

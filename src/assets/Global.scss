@@ -83,6 +83,10 @@ input[type="radio"] {
 .button {
   @apply rounded-xl px-16 py-2 font-bold bg-black text-white hover:bg-button-dark-hover;
 
+  @media (max-width: 768px) {
+    @apply px-8 py-1 text-lg;
+  }
+
   &:not(&:disabled) {
     @apply hover:shadow-lg;
   }

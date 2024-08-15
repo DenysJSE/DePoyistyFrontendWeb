@@ -5,9 +5,9 @@ function Home() {
 	const { dishId } = useParams()
 
 	return (
-		<div className='flex' style={{ height: 'calc(100vh - 80px)' }}>
+		<div className='flex' style={{ height: 'calc(100dvh - 80px)' }}>
 			<Catalog />
-			<div className='flex-1 p-4 ml-[600px]'>
+			<div className='flex-1 p-4 ml-[600px] max-xs:hidden'>
 				{dishId ? (
 					<Outlet />
 				) : (
