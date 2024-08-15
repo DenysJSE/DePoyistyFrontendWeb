@@ -1,21 +1,29 @@
 .searchbar {
-  @apply fixed right-0 left-8 max-w-[535px] max-md:right-8 max-xl:max-w-[385px];
+  @apply fixed right-0 left-8 max-w-[535px];
+
+  @media (max-width: 1919px) {
+    @apply max-w-[418px] left-4 right-4;
+  }
 
   @media (max-width: 992px) {
     @apply max-w-full;
   }
 
-  @media (max-width: 768px) {
-    @apply left-4 right-4;
-  }
-
   > div {
     > .icon {
-      @apply absolute text-black top-2.5 left-4 w-5 max-sm:w-4 max-sm:top-1.5;
+      @apply absolute text-black top-2.5 left-4 w-5;
+
+      @media (max-width: 1919px) {
+        @apply w-4 top-1.5;
+      }
     }
 
     > input {
-      @apply w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border max-sm:pl-10 max-sm:text-sm;
+      @apply w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border;
+
+      @media (max-width: 1919px) {
+        @apply pl-10 text-sm;
+      }
     }
   }
 }

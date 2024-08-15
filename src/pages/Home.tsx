@@ -10,7 +10,7 @@ function Home() {
 			style={{ height: 'calc(100dvh - var(--header-height))' }}
 		>
 			<Catalog />
-			<div className='flex-1 p-4 ml-[600px] max-xl:ml-[418px] max-md:hidden'>
+			<div className='flex-1 p-4 ml-[600px] max-2xl:ml-[450px] max-md:hidden'>
 				{dishId ? (
 					<Outlet />
 				) : (
