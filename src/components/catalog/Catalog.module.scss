@@ -2,7 +2,7 @@
   height: calc(100vh - var(--header-height));
   @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0;
 
-  @media (max-width: 1919px) {
+  @media (max-width: 1920px) {
     @apply w-[450px] px-4 pt-4 top-20;
   }
 
@@ -18,7 +18,7 @@
 .catalogDishList {
   @apply mt-16 pb-10 flex flex-col gap-4;
 
-  @media (max-width: 1919px) {
+  @media (max-width: 1920px) {
     @apply mt-14;
   }
 
@@ -30,7 +30,7 @@
 .catalogDish {
   @apply border border-border rounded-2xl p-3 px-3 pr-8 flex items-center gap-6 cursor-pointer;
 
-  @media (max-width: 1919px) {
+  @media (max-width: 1920px) {
     @apply gap-3;
   }
 
@@ -52,7 +52,7 @@
     > h1 {
       @apply text-2xl font-semibold;
 
-      @media (max-width: 1919px) {
+      @media (max-width: 1920px) {
         @apply text-xl;
       }
 
@@ -72,7 +72,7 @@
     > .dishCardFooter {
       @apply flex items-center justify-between pt-2;
 
-      @media (max-width: 1919px) {
+      @media (max-width: 1920px) {
         @apply text-lg;
       }
 

@@ -1,10 +1,153 @@
 .dishCard {
   @apply p-10 flex flex-col gap-8 relative;
 
-  > div {
-    > img {
-      @apply w-80 rounded-2xl;
+  @media (max-width: 1920px) {
+    @apply px-2;
+  }
+
+  > .buttons {
+    @apply absolute right-8 top-4 flex items-center gap-5;
+
+    @media (max-width: 1920px) {
+      @apply top-6;
     }
   }
 
+  > .product {
+    @apply flex gap-8;
+
+    @media (max-width: 1399px) {
+      @apply flex-col;
+    }
+
+    > img {
+      @apply w-80 h-80 object-cover rounded-2xl;
+
+      @media (max-width: 1920px) {
+        @apply w-60 h-60;
+      }
+
+      @media (max-width: 1399px) {
+        @apply w-96 h-96 m-auto;
+      }
+
+      @media (max-width: 1200px) {
+        @apply w-60 h-60 m-auto;
+      }
+    }
+
+    > .productInfo {
+      @apply flex flex-col gap-2 w-full;
+
+      > .productTitle {
+        @apply text-4xl font-semibold;
+
+        @media (max-width: 1920px) {
+          @apply text-3xl;
+        }
+      }
+
+      > .productDescription {
+        @apply italic text-placeholder text-lg;
+
+        @media (max-width: 1920px) {
+          @apply text-sm;
+        }
+      }
+
+      > .productRestaurantCategory {
+        @apply italic;
+
+        @media (max-width: 1920px) {
+          @apply text-sm;
+        }
+
+        > span {
+          @apply text-subcolor font-semibold not-italic;
+        }
+      }
+
+      > .productInfoFooter {
+        @apply flex items-center justify-between mt-4;
+
+        @media (max-width: 1920px) {
+          @apply mt-2;
+        }
+
+        > p {
+          @apply font-bold text-3xl;
+
+          @media (max-width: 1920px) {
+            @apply text-xl;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dishReviewSection {
+  > h1 {
+    @apply font-semibold text-3xl;
+  }
+
+  > div {
+    @apply flex items-start gap-10;
+
+    @media (max-width: 1920px) {
+      @apply gap-5;
+    }
+
+    @media (max-width: 1399px) {
+      @apply flex-col-reverse gap-1;
+    }
+
+    > .dishReviews {
+      @apply flex flex-col min-w-[850px] max-2xl:w-full;
+
+      @media (max-width: 1920px) {
+        @apply min-w-[600px];
+      }
+
+      @media (max-width: 1200px) {
+        @apply min-w-[400px];
+      }
+    }
+  }
+}
+
+.dishReviewCard {
+  @apply max-w-[950px] border border-border rounded-xl p-4 mt-6;
+
+  @media (max-width: 1920px) {
+    @apply max-w-full;
+  }
+
+  @media (max-width: 1399px) {
+    @apply p-2 px-4 mt-3;
+  }
+
+  > div {
+    @apply flex items-center justify-between;
+
+    > h1 {
+      @apply font-bold text-2xl max-xl:text-lg;
+    }
+
+    > div {
+      @apply flex items-center gap-2 max-xl:gap-1;
+
+      > svg {
+        @apply w-5 max-xl:w-4;
+      }
+
+      > p {
+        @apply font-semibold max-xl:text-lg;
+      }
+    }
+  }
+
+  > p {
+    @apply mt-2 max-xl:text-xs max-xl:mt-1;
+  }
 }
