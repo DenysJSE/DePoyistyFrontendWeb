@@ -1,8 +1,12 @@
 .auth {
-  @apply w-screen h-screen flex;
+  @apply w-screen h-dvh flex;
 
   > form {
     @apply flex flex-col p-8 py-12 m-auto min-w-[450px] gap-7 rounded-xl shadow-lg shadow-black bg-form-bg text-app-text border border-border;
+
+    @media (max-width: 700px) {
+      @apply w-full h-dvh bg-background border-none shadow-none min-w-[350px] p-4 justify-center;
+    }
 
     > h1 {
       @apply text-center text-4xl font-bold;
