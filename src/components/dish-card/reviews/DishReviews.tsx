@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import Loader from '../../Loader.tsx'
 import { dishService } from '../../../services/dish.service.ts'
 import NotFoundPage from '../../../pages/NotFoundPage.tsx'
+import styles from '../DishCard.module.scss'
 
 interface IDishReviews {
 	dish: TDish | undefined
@@ -24,10 +25,10 @@ function DishReviews({ dish }: IDishReviews) {
 	if (!dish) return <NotFoundPage />
 
 	return (
-		<div>
-			<h1 className='font-semibold text-3xl'>Reviews:</h1>
-			<div className='flex items-start gap-10'>
-				<div className='flex flex-col min-w-[650px]'>
+		<section className={styles.dishReviewSection}>
+			<h1>Reviews:</h1>
+			<div>
+				<div className={styles.dishReviews}>
 					{reviews.length > 0 ? (
 						reviews.map(review => (
 							<DishReviewCard
@@ -45,7 +46,7 @@ function DishReviews({ dish }: IDishReviews) {
 				</div>
 				<LeaveCommentForm dishId={dish.id} />
 			</div>
-		</div>
+		</section>
 	)
 }
 
