@@ -5,6 +5,10 @@
     @apply max-w-[418px] left-4 right-4;
   }
 
+  @media (max-width: 1200px) {
+    @apply max-w-[317px] left-4 right-4;
+  }
+
   @media (max-width: 992px) {
     @apply max-w-full;
   }

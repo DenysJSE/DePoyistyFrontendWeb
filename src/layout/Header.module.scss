@@ -1,7 +1,7 @@
 .header {
-  @apply h-20 px-24 border-b border-border flex justify-between items-center fixed right-0 left-0 bg-background z-50 max-md:px-10 max-sm:h-16;
+  @apply h-20 px-24 border-b border-border flex justify-between items-center fixed right-0 left-0 bg-background z-50 max-sm:h-16;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1200px) {
     @apply px-5;
   }
 

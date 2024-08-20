@@ -1,0 +1,11 @@
+.homeLayout {
+  @apply flex-1 p-4 ml-[600px] max-md:hidden;
+
+  @media (max-width: 1920px) {
+    @apply ml-[450px];
+  }
+
+  @media (max-width: 1200px) {
+    @apply ml-[350px];
+  }
+}

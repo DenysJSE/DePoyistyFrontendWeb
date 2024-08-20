@@ -22,7 +22,7 @@ function CatalogDish({ dish }: ICatalogDish) {
 						<h2 className={styles.dishCardPrice}>{dish.price} грн.</h2>
 						{dish.rating !== 0 && (
 							<h2 className={styles.dishCardRating}>
-								<Star className='w-5 max-xs:w-4' style={{ color: 'gold' }} />
+								<Star style={{ color: 'gold' }} />
 								{dish.rating}
 							</h2>
 						)}
