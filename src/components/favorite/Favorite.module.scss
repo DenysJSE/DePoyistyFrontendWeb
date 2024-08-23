@@ -1,0 +1,86 @@
+.favoriteDishes {
+  @apply p-10 px-20 flex flex-col items-center;
+
+  @media (max-width: 1200px) {
+    @apply p-4 pt-8;
+  }
+
+  > h1 {
+    @apply text-4xl font-semibold max-lg:text-3xl;
+  }
+
+  > div {
+    @apply flex flex-col w-full gap-4 mt-6 place-content-center;
+  }
+}
+
+.favoriteCard {
+  @apply flex border border-border p-4 pr-20 rounded-2xl gap-6 relative;
+
+  @media (max-width: 480px) {
+    @apply p-3;
+  }
+
+  > .buttons {
+    @apply absolute right-6 top-4;
+
+    @media (max-width: 480px) {
+      @apply right-3 top-3;
+
+      > svg {
+        @apply w-5 h-5;
+      }
+    }
+  }
+
+  > img {
+    @apply w-32 rounded-lg;
+
+    @media (max-width: 768px) {
+      @apply w-28;
+    }
+
+    @media (max-width: 480px) {
+      @apply w-20 h-20;
+    }
+  }
+
+  > .dishInfo {
+
+    > h1 {
+      @apply text-3xl font-semibold;
+
+      @media (max-width: 992px) {
+        @apply text-2xl;
+      }
+
+      @media (max-width: 480px) {
+        @apply text-lg;
+      }
+    }
+
+    > p {
+      @apply italic text-placeholder text-lg;
+
+      @media (max-width: 992px) {
+        @apply text-lg;
+      }
+
+      @media (max-width: 480px) {
+        @apply text-xs;
+      }
+    }
+
+    > span {
+      @apply font-semibold text-2xl mt-2;
+
+      @media (max-width: 992px) {
+        @apply text-xl;
+      }
+
+      @media (max-width: 480px) {
+        @apply text-lg mt-0;
+      }
+    }
+  }
+}
