@@ -16,18 +16,10 @@
   > div {
     > .icon {
       @apply absolute text-black top-2.5 left-4 w-5;
-
-      @media (max-width: 1920px) {
-        @apply w-4 top-1.5;
-      }
     }
 
     > input {
       @apply w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border;
-
-      @media (max-width: 1920px) {
-        @apply pl-10 text-sm;
-      }
     }
   }
 }
