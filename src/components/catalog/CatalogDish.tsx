@@ -3,14 +3,19 @@ import { Star } from 'lucide-react'
 import { TDish } from '../../types/dish.types.ts'
 import DishIcon from '../../assets/images/dish-image.webp'
 import { NavLink } from 'react-router-dom'
+import useWindowSize from '../../hooks/useWindowSize.tsx'
 
 interface ICatalogDish {
 	dish: TDish
 }
 
 function CatalogDish({ dish }: ICatalogDish) {
+	const { width } = useWindowSize()
+
+	const isMobile = width ? width < 992 : false
+
 	return (
-		<NavLink to={`/dish/${dish.id}`}>
+		<NavLink to={isMobile ? `/m/dish/${dish.id}` : `/dish/${dish.id}`}>
 			<div className={styles.catalogDish}>
 				<img src={DishIcon} alt='dish-image' />
 				<div className={styles.dishCardHeader}>
