@@ -11,8 +11,10 @@ import Loader from '../Loader.tsx'
 import NotFoundPage from '../../pages/NotFoundPage.tsx'
 import DishRating from './reviews/DishRating.tsx'
 import cn from 'clsx'
+import { useAuth } from '../../hooks/useAuth.ts'
 
 function DishCard() {
+	const { isAuthenticated } = useAuth()
 	const { dishId } = useParams<{ dishId: string }>()
 	const id = dishId ? parseInt(dishId, 10) : undefined
 
@@ -36,7 +38,7 @@ function DishCard() {
 	return (
 		<div className={styles.dishCard}>
 			<div className={styles.buttons}>
-				<FavoriteButton dishId={dish.id} />
+				{isAuthenticated && <FavoriteButton dishId={dish.id} />}
 				<CircleX
 					onClick={handleBackToHome}
 					className='cursor-pointer w-9 h-auto max-2xl:w-7'
