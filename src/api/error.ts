@@ -2,7 +2,9 @@ export const getContentType = () => ({
 	'Content-Type': 'application/json'
 })
 
-export const errorCatch = (error: any): string => {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+export const errorCatch = (error): string => {
 	const message = error?.response?.data?.message
 
 	return message

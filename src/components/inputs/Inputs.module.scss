@@ -1,0 +1,25 @@
+.searchbar {
+  @apply fixed right-0 left-8 max-w-[535px];
+
+  @media (max-width: 1920px) {
+    @apply max-w-[418px] left-4 right-4;
+  }
+
+  @media (max-width: 1200px) {
+    @apply max-w-[317px] left-4 right-4;
+  }
+
+  @media (max-width: 992px) {
+    @apply max-w-full;
+  }
+
+  > div {
+    > .icon {
+      @apply absolute text-black top-2.5 left-4 w-5;
+    }
+
+    > input {
+      @apply w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border;
+    }
+  }
+}

@@ -13,10 +13,10 @@ function DishRating({ dishId }: { dishId: number }) {
 	if (!dish) return <div>Dish not found</div>
 
 	return (
-		<div className='flex items-center justify-between mt-4'>
+		<div className='flex items-center justify-between mt-4 max-2xl:mt-2'>
 			{dish.rating !== 0 && (
-				<p className='font-semibold text-2xl flex items-center gap-2'>
-					<Star style={{ color: 'gold' }} size={25} />
+				<p className='font-semibold text-2xl flex items-center gap-2 max-2xl:text-xl'>
+					<Star style={{ color: 'gold' }} className='w-6 max-2xl:w-5' />
 					{dish.rating}
 				</p>
 			)}

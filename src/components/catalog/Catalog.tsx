@@ -7,7 +7,7 @@ function Catalog() {
 	const [searchQuery, setSearchQuery] = useState('')
 
 	return (
-		<aside className={styles.catalog} style={{ height: 'calc(100vh - 80px)' }}>
+		<aside className={styles.catalog}>
 			<Searchbar setSearchQuery={setSearchQuery} />
 			<CatalogDishList searchQuery={searchQuery} />
 		</aside>

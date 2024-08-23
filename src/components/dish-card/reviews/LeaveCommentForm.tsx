@@ -55,8 +55,10 @@ function LeaveCommentForm({ dishId }: ILeaveCommentForm) {
 	}
 
 	return (
-		<div className='-mt-8 w-full'>
-			<h1 className='font-semibold text-2xl'>Leave your comment:</h1>
+		<div className='-mt-8 w-full max-2xl:mt-2'>
+			<h1 className='font-semibold text-2xl max-xl:text-xl'>
+				Leave your comment:
+			</h1>
 			{isAuthenticated ? (
 				<>
 					<CustomRatingElement rating={rating} setRating={setRating} />
@@ -66,7 +68,7 @@ function LeaveCommentForm({ dishId }: ILeaveCommentForm) {
 						onChange={handleReviewTextChange}
 						placeholder='Write your comment...'
 						id='comment'
-						className='w-full min-h-32 mt-6 rounded-xl outline-none text-black p-2 px-4 text-lg resize-none'
+						className='w-full min-h-32 mt-6 rounded-xl outline-none text-black p-2 px-4 text-lg resize-none max-2xl:mt-2 max-xl:text-sm max-xl:py-3'
 					/>
 					{reviewText.length !== 0 && rating !== 0 && (
 						<Button

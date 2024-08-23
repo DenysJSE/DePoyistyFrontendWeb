@@ -27,6 +27,14 @@ export const router = createBrowserRouter([
 		errorElement: <NotFoundPage />
 	},
 	{
+		path: '/m/dish/:dishId',
+		element: (
+			<Layout>
+				<DishCard />
+			</Layout>
+		)
+	},
+	{
 		path: '/auth',
 		element: <AuthPage />
 	},

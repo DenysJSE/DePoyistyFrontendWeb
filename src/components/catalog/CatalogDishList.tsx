@@ -3,6 +3,7 @@ import { dishService } from '../../services/dish.service.ts'
 import { useQuery } from '@tanstack/react-query'
 import Loader from '../Loader.tsx'
 import NotFoundPage from '../../pages/NotFoundPage.tsx'
+import styles from './Catalog.module.scss'
 
 interface ICatalogDishList {
 	searchQuery: string
@@ -22,13 +23,11 @@ function CatalogDishList({ searchQuery }: ICatalogDishList) {
 	)
 
 	return (
-		<section className='mt-16 pb-10 flex flex-col gap-4'>
+		<section className={styles.catalogDishList}>
 			{filteredDishes.length > 0 ? (
 				filteredDishes.map(dish => <CatalogDish key={dish.id} dish={dish} />)
 			) : (
-				<p className='flex justify-center mt-6 text-2xl font-semibold'>
-					No dishes found
-				</p>
+				<p>No dishes found</p>
 			)}
 		</section>
 	)

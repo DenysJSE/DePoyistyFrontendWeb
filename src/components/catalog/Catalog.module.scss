@@ -1,11 +1,144 @@
 .catalog {
+  height: calc(100vh - var(--header-height));
   @apply w-[600px] border-border border-r px-8 pt-8 overflow-auto fixed top-20 left-0 border-0;
+
+  @media (max-width: 1920px) {
+    @apply w-[450px] px-4 pt-4 top-20;
+  }
+
+  @media (max-width: 1200px) {
+    @apply w-[350px];
+  }
+
+  @media (max-width: 992px) {
+    @apply w-full border-none;
+  }
+
+  @media (max-width: 768px) {
+    @apply top-16;
+  }
+}
+
+.catalogDishList {
+  @apply mt-16 pb-10 flex flex-col gap-4;
+
+  @media (max-width: 1920px) {
+    @apply mt-14;
+  }
+
+  > p {
+    @apply flex justify-center mt-6 text-2xl font-semibold;
+  }
 }
 
 .catalogDish {
   @apply border border-border rounded-2xl p-3 px-3 pr-8 flex items-center gap-6 cursor-pointer;
 
+  @media (max-width: 1920px) {
+    @apply gap-3;
+  }
+
+  @media (max-width: 1200px) {
+    @apply pr-4 p-2;
+  }
+
+  @media (max-width: 992px) {
+    @apply p-3 pr-8;
+  }
+
   &:hover {
     @apply bg-active-element-hover;
+  }
+
+  > img {
+    @apply w-24 rounded-xl;
+
+    @media (max-width: 1200px) {
+      @apply w-16;
+    }
+
+    @media (max-width: 992px) {
+      @apply w-20;
+    }
+  }
+
+  > .dishCardHeader {
+    @apply w-full;
+
+    > h1 {
+      @apply text-2xl font-semibold;
+
+      @media (max-width: 1920px) {
+        @apply text-xl;
+      }
+
+      @media (max-width: 1200px) {
+        @apply text-sm;
+      }
+
+      @media (max-width: 992px) {
+        @apply text-xl;
+      }
+
+      @media (max-width: 480px) {
+        @apply text-lg;
+      }
+    }
+
+    > p {
+      @apply text-sm text-subcolor;
+
+      @media (max-width: 1200px) {
+        @apply text-xs;
+      }
+
+      @media (max-width: 992px) {
+        @apply text-sm;
+      }
+
+      @media (max-width: 480px) {
+        @apply text-xs;
+      }
+    }
+
+    > .dishCardFooter {
+      @apply flex items-center justify-between pt-2;
+
+      @media (max-width: 1920px) {
+        @apply text-lg;
+      }
+
+      @media (max-width: 1200px) {
+        @apply text-xs pt-0;
+      }
+
+      @media (max-width: 992px) {
+        @apply text-lg;
+      }
+
+      @media (max-width: 480px) {
+        @apply pt-1;
+      }
+
+      > .dishCardPrice {
+        @apply font-bold;
+      }
+
+      > .dishCardRating {
+        @apply flex items-center gap-1 font-bold;
+
+        > svg {
+          @apply w-4;
+
+          @media (max-width: 1200px) {
+            @apply w-3;
+          }
+
+          @media (max-width: 992px) {
+            @apply w-4;
+          }
+        }
+      }
+    }
   }
 }

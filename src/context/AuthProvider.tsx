@@ -41,6 +41,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 			setIsAdmin(userProfile.isAdmin)
 		} catch (error) {
 			setIsAuthenticated(false)
+			setUser(undefined)
 			setIsAdmin(false)
 		} finally {
 			setIsLoading(false)

@@ -1,5 +1,6 @@
 import { Search } from 'lucide-react'
 import React from 'react'
+import styles from './Inputs.module.scss'
 
 function Searchbar({
 	setSearchQuery
@@ -11,13 +12,12 @@ function Searchbar({
 	}
 
 	return (
-		<div className='fixed right-0 left-8 max-w-[535px]'>
+		<div className={styles.searchbar}>
 			<div className='relative'>
-				<Search className='absolute text-black top-3 left-4' size={20} />
+				<Search className={styles.icon} />
 				<input
 					type='text'
 					placeholder='Search...'
-					className='w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border'
 					onChange={handleInputChange}
 				/>
 			</div>

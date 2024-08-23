@@ -10,8 +10,11 @@ import { useQuery } from '@tanstack/react-query'
 import Loader from '../Loader.tsx'
 import NotFoundPage from '../../pages/NotFoundPage.tsx'
 import DishRating from './reviews/DishRating.tsx'
+import cn from 'clsx'
+import { useAuth } from '../../hooks/useAuth.ts'
 
 function DishCard() {
+	const { isAuthenticated } = useAuth()
 	const { dishId } = useParams<{ dishId: string }>()
 	const id = dishId ? parseInt(dishId, 10) : undefined
 
@@ -34,33 +37,31 @@ function DishCard() {
 
 	return (
 		<div className={styles.dishCard}>
-			<div className='absolute right-8 top-4 flex items-center gap-5'>
-				<FavoriteButton dishId={dish.id} />
+			<div className={styles.buttons}>
+				{isAuthenticated && <FavoriteButton dishId={dish.id} />}
 				<CircleX
-					size={35}
 					onClick={handleBackToHome}
-					className='cursor-pointer'
+					className='cursor-pointer w-9 h-auto max-2xl:w-7'
 				/>
 			</div>
-			<div className='flex gap-8'>
+			<div className={styles.product}>
 				<img src={DishImage} alt='dish-image' />
-				<div className='flex flex-col gap-2 w-full'>
-					<h1 className='text-4xl font-semibold'>{dish.name}</h1>
-					<p className='italic text-placeholder text-lg'>{dish.description}</p>
-					<p className='mt-4 italic'>
-						<span className='text-subcolor font-semibold not-italic'>
-							Restaurant:
-						</span>{' '}
-						{dish.restaurant.name}
+				<div className={styles.productInfo}>
+					<h1 className={styles.productTitle}>{dish.name}</h1>
+					<p className={styles.productDescription}>{dish.description}</p>
+					<p
+						className={cn(
+							styles.productRestaurantCategory,
+							'mt-4 max-2xl:mt-2'
+						)}
+					>
+						<span>Restaurant:</span> {dish.restaurant.name}
 					</p>
-					<p className='italic'>
-						<span className='text-subcolor font-semibold not-italic'>
-							Category:
-						</span>{' '}
-						{dish.category.name}
+					<p className={styles.productRestaurantCategory}>
+						<span>Category:</span> {dish.category.name}
 					</p>
-					<div className='flex items-center justify-between mt-4'>
-						<p className='font-bold text-3xl'>{dish.price} грн.</p>
+					<div className={styles.productInfoFooter}>
+						<p>{dish.price} грн.</p>
 						<DishRating dishId={dish.id} />
 					</div>
 				</div>

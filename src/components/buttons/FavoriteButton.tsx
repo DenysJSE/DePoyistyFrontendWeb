@@ -20,8 +20,7 @@ function FavoriteButton({ dishId }: { dishId: number }) {
 
 	return (
 		<Heart
-			size={35}
-			className={`cursor-pointer ${isExist ? 'text-subcolor' : 'text-app-text'}`}
+			className={`cursor-pointer w-9 h-auto max-2xl:w-7 ${isExist ? 'text-subcolor' : 'text-app-text'}`}
 			onClick={() => mutate()}
 		/>
 	)

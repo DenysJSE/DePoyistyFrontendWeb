@@ -1,13 +1,17 @@
 import Catalog from '../components/catalog/Catalog.tsx'
 import { Outlet, useParams } from 'react-router-dom'
+import styles from './Pages.module.scss'
 
 function Home() {
 	const { dishId } = useParams()
 
 	return (
-		<div className='flex' style={{ height: 'calc(100vh - 80px)' }}>
+		<div
+			className='flex'
+			style={{ height: 'calc(100dvh - var(--header-height))' }}
+		>
 			<Catalog />
-			<div className='flex-1 p-4 ml-[600px]'>
+			<div className={styles.homeLayout}>
 				{dishId ? (
 					<Outlet />
 				) : (
