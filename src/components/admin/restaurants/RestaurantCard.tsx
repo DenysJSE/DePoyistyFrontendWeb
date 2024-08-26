@@ -2,13 +2,16 @@ import styles from './AdminRestaurants.module.scss'
 import { ChevronDown, ChevronUp, Pencil, Trash } from 'lucide-react'
 import { useState } from 'react'
 import cn from 'clsx'
+import { TDish } from '../../../types/dish.types.ts'
+import RestaurantDishCard from './RestaurantDishCard.tsx'
+import AddNewDishCard from './AddNewDishCard.tsx'
 
 interface IRestaurantCard {
 	title: string
-	menuItems: number
+	dishes: TDish[]
 }
 
-function RestaurantCard({ title, menuItems }: IRestaurantCard) {
+function RestaurantCard({ title, dishes }: IRestaurantCard) {
 	const [isCollapsed, setIsCollapsed] = useState(false)
 
 	const handleOpen = () => {
@@ -28,7 +31,7 @@ function RestaurantCard({ title, menuItems }: IRestaurantCard) {
 				)}
 			>
 				<h1>
-					{title} <span>{menuItems} dishes</span>
+					{title} <span>{dishes.length} dishes</span>
 				</h1>
 				<div>
 					<Pencil />
@@ -40,7 +43,14 @@ function RestaurantCard({ title, menuItems }: IRestaurantCard) {
 					)}
 				</div>
 			</div>
-			{isCollapsed && <div className={styles.restaurantDishes}>Dishes</div>}
+			{isCollapsed && (
+				<div className={styles.restaurantDishes}>
+					{dishes.map(dish => (
+						<RestaurantDishCard dish={dish} key={dish.id} />
+					))}
+					<AddNewDishCard />
+				</div>
+			)}
 		</div>
 	)
 }

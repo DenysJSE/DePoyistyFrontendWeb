@@ -30,7 +30,7 @@ function AdminRestaurants() {
 					restaurants.map(restaurant => (
 						<RestaurantCard
 							title={restaurant.name}
-							menuItems={restaurant.menu.length}
+							dishes={restaurant.menu}
 							key={restaurant.id}
 						/>
 					))
