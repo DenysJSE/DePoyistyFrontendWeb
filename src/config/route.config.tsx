@@ -60,6 +60,28 @@ export const router = createBrowserRouter([
 					<AdminPage />
 				</Layout>
 			</AdminPrivateRoute>
-		)
+		),
+		children: [
+			{
+				path: '/admin/restaurants',
+				element: ''
+			},
+			{
+				path: '/admin/dishes',
+				element: ''
+			},
+			{
+				path: '/admin/reviews',
+				element: ''
+			},
+			{
+				path: '/admin/categories',
+				element: ''
+			},
+			{
+				path: '/admin/users',
+				element: ''
+			}
+		]
 	}
 ])
