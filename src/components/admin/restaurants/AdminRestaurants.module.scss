@@ -1,0 +1,39 @@
+.adminRestaurants {
+  @apply w-full;
+
+  > .restaurantsList {
+    @apply mt-10 flex flex-col gap-2;
+  }
+}
+
+.adminRestaurantsCard {
+  @apply p-4 px-5 border border-border rounded-xl flex items-center justify-between;
+
+  > h1 {
+    @apply font-semibold;
+
+    > span {
+      @apply font-normal text-sm text-placeholder ml-1;
+    }
+  }
+
+  > div {
+    @apply flex items-center gap-2;
+
+    * {
+      @apply w-10 h-10 p-2.5 rounded-lg cursor-pointer select-none;
+
+      &:hover {
+        @apply bg-active-element-hover;
+      }
+    }
+  }
+}
+
+.cardCollapsed {
+  @apply rounded-b-none;
+}
+
+.restaurantDishes {
+  @apply border border-border border-t-0 p-3 px-5 rounded-b-xl;
+}

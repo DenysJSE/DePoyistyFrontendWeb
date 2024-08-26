@@ -9,6 +9,7 @@ import AuthGoogleCallback from '../components/auth/AuthGoogleCallback.tsx'
 import Home from '../pages/Home.tsx'
 import Layout from '../layout/Layout.tsx'
 import DishCard from '../components/dish-card/DishCard.tsx'
+import AdminRestaurants from '../components/admin/restaurants/AdminRestaurants.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -64,7 +65,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: '/admin/restaurants',
-				element: ''
+				element: <AdminRestaurants />
 			},
 			{
 				path: '/admin/dishes',
