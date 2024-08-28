@@ -1,5 +1,5 @@
 import styles from './AdminCategories.module.scss'
-import { Info, Pencil, Trash } from 'lucide-react'
+import { Pencil, Trash } from 'lucide-react'
 import { useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { categoryService } from '../../../services/category.service.ts'
@@ -39,7 +39,6 @@ function CategoryCard({ title, categoryId }: ICategoryCard) {
 			<div className={styles.categoryCard}>
 				<h1>{title}</h1>
 				<div>
-					<Info />
 					<Pencil onClick={handleShowEditForm} />
 					<Trash
 						style={{ color: '#f87171' }}

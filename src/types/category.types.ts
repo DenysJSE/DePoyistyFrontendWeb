@@ -6,7 +6,3 @@ export type TCategory = TBase & {
 	slug: string
 	dishes: TDish[]
 }
-
-export type TUpdateCategory = {
-	name: string
-}
