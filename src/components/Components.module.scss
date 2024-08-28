@@ -17,7 +17,7 @@
       @apply ml-auto flex items-center gap-2 mt-2;
 
       > .cancelButton {
-        @apply text-app-text bg-black;
+        @apply text-app-text bg-active-element-hover;
       }
     }
   }

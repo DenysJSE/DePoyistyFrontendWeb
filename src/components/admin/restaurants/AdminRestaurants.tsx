@@ -32,6 +32,7 @@ function AdminRestaurants() {
 							title={restaurant.name}
 							dishes={restaurant.menu}
 							restaurantId={restaurant.id}
+							address={restaurant.address}
 							key={restaurant.id}
 						/>
 					))

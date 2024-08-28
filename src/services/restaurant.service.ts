@@ -1,5 +1,5 @@
 import { axiosClassic, axiosWithAuth } from '../api/interceptor.ts'
-import { TRestaurant } from '../types/restaurant.types.ts'
+import { TRestaurant, TUpdateRestaurant } from '../types/restaurant.types.ts'
 
 export const restaurantService = {
 	async getAllRestaurants() {
@@ -31,11 +31,11 @@ export const restaurantService = {
 
 	async updateRestaurant(
 		restaurantId: number | string,
-		restaurantName: string
+		restaurantData: TUpdateRestaurant
 	) {
 		const response = await axiosWithAuth.put<TRestaurant>(
 			`/restaurants/${restaurantId}`,
-			restaurantName
+			restaurantData
 		)
 		return response.data
 	},
