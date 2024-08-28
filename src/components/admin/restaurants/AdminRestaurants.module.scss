@@ -93,7 +93,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   > .editRestaurant {
-    @apply border border-border p-5 px-7 rounded-xl w-[450px];
+    @apply border border-border p-5 px-7 rounded-xl w-[450px] bg-background;
 
     > h1 {
       @apply text-center font-semibold text-2xl;
