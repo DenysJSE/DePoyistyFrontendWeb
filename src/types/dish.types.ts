@@ -13,3 +13,11 @@ export type TDish = TBase & {
 	category: TCategory
 	restaurant: TRestaurant
 }
+
+export type TCreateDish = {
+	name: string
+	description: string
+	price: number
+	categoryId: number
+	restaurantId: number
+}

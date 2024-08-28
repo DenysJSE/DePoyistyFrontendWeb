@@ -1,5 +1,5 @@
 import { axiosClassic, axiosWithAuth } from '../api/interceptor.ts'
-import { TDish } from '../types/dish.types.ts'
+import { TCreateDish, TDish } from '../types/dish.types.ts'
 
 export const dishService = {
 	async getAllDishes() {
@@ -19,8 +19,8 @@ export const dishService = {
 		return response.data
 	},
 
-	async createDish(dishName: string) {
-		const response = await axiosWithAuth.post<TDish>('/dishes', dishName)
+	async createDish(dishData: TCreateDish) {
+		const response = await axiosWithAuth.post<TDish>('/dishes', dishData)
 		return response.data
 	},
 

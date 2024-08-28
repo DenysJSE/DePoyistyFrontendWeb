@@ -54,7 +54,7 @@ function RestaurantCard({
 	}
 
 	return (
-		<div>
+		<div className='overflow-hidden rounded-xl'>
 			<div
 				className={cn(
 					styles.adminRestaurantsCard,
@@ -97,7 +97,7 @@ function RestaurantCard({
 					{dishes.map(dish => (
 						<RestaurantDishCard dish={dish} key={dish.id} />
 					))}
-					<AddNewDishCard />
+					<AddNewDishCard restaurantId={restaurantId} restaurantName={title} />
 				</div>
 			)}
 		</div>

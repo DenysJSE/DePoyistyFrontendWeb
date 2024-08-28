@@ -35,11 +35,24 @@
 }
 
 .restaurantDishes {
-  @apply border border-border border-t-0 p-3 px-5 rounded-b-xl flex items-stretch gap-6;
+  @apply border border-border border-t-0 p-3 px-5 rounded-b-xl flex items-stretch gap-6 overflow-x-auto;
+}
+
+.restaurantDishes::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.restaurantDishes::-webkit-scrollbar-thumb {
+  background-color: var(--placeholder);
+}
+
+.restaurantDishes::-webkit-scrollbar-track {
+  background-color: var(--border);
 }
 
 .restaurantDishCard {
-  @apply border border-border rounded-xl overflow-hidden w-fit;
+  @apply border border-border rounded-xl overflow-hidden w-fit min-w-[208px];
 
   > .imageWrapper {
     @apply h-40 w-52 overflow-hidden flex items-center justify-center;
@@ -73,7 +86,7 @@
 }
 
 .addNewDishCard {
-  @apply w-[208px] min-h-[254px] border border-border rounded-xl flex flex-col items-center justify-center gap-3;
+  @apply w-[208px] min-h-[254px] border border-border rounded-xl flex flex-col items-center justify-center gap-3 cursor-pointer;
 
   > div {
     @apply bg-placeholder rounded-full p-3;
@@ -88,18 +101,18 @@
   }
 }
 
-.editRestaurantWrapper {
+.dialogFormWrapper {
   @apply absolute top-0 left-0 h-screen w-screen z-50 flex justify-center items-center;
   background-color: rgba(0, 0, 0, 0.5);
 
-  > .editRestaurant {
+  > .dialogForm {
     @apply border border-border p-5 px-7 rounded-xl w-[450px] bg-background;
 
     > h1 {
       @apply text-center font-semibold text-2xl;
     }
 
-    > .editRestaurantInputs {
+    > .dialogFormInputs {
       @apply my-4 flex flex-col gap-4;
 
       > div {
@@ -112,10 +125,18 @@
         > input {
           @apply mt-1 rounded-lg outline-none border border-border bg-background p-1 px-3 text-lg focus:border-subcolor;
         }
+
+        > textarea {
+          @apply mt-1 rounded-lg outline-none border border-border bg-background p-2 px-3 text-lg focus:border-subcolor min-h-32 max-h-80;
+        }
+
+        > select {
+          @apply mt-1 rounded-lg outline-none border border-border bg-background p-2 px-3 text-lg focus:border-subcolor;
+        }
       }
     }
 
-    > .editRestaurantButtons {
+    > .dialogFormButtons {
       @apply flex gap-2 justify-end;
 
       > .cancelButton {

@@ -1,5 +1,5 @@
 .adminSidebar {
-  @apply w-80 border-r border-border p-3 flex flex-col gap-2;
+  @apply min-w-80 border-r border-border p-3 flex flex-col gap-2;
   height: calc(100vh - var(--header-height));
 
   > .sidebarItem {

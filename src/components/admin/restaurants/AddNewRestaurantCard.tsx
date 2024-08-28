@@ -38,10 +38,10 @@ function AddNewRestaurantCard({
 	}
 
 	return (
-		<section className={styles.editRestaurantWrapper}>
-			<div className={styles.editRestaurant}>
+		<section className={styles.dialogFormWrapper}>
+			<div className={styles.dialogForm}>
 				<h1>Add new restaurant</h1>
-				<div className={styles.editRestaurantInputs}>
+				<div className={styles.dialogFormInputs}>
 					<div>
 						<label htmlFor='restaurant-name'>Restaurant name</label>
 						<input
@@ -61,7 +61,7 @@ function AddNewRestaurantCard({
 						/>
 					</div>
 				</div>
-				<div className={styles.editRestaurantButtons}>
+				<div className={styles.dialogFormButtons}>
 					<Button
 						type='button'
 						size='small'

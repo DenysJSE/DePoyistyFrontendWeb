@@ -5,7 +5,7 @@ function Admin() {
 	return (
 		<div className='flex'>
 			<Sidebar />
-			<div className='w-full p-4 px-8'>
+			<div className='p-4 px-8' style={{ width: 'calc(100vw - 320px)' }}>
 				<Outlet />
 			</div>
 		</div>
