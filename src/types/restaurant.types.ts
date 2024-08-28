@@ -10,3 +10,8 @@ export type TRestaurant = TBase & {
 	reviews: TReview[]
 	menu: TDish[]
 }
+
+export type TUpdateRestaurant = {
+	name: string
+	address: string
+}

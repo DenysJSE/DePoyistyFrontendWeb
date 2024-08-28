@@ -1,0 +1,147 @@
+.adminRestaurants {
+  @apply w-full;
+
+  > .restaurantsList {
+    @apply mt-10 flex flex-col gap-2;
+  }
+}
+
+.adminRestaurantsCard {
+  @apply p-4 px-5 border border-border rounded-xl flex items-center justify-between;
+
+  > h1 {
+    @apply font-semibold;
+
+    > span {
+      @apply font-normal text-sm text-placeholder ml-1;
+    }
+  }
+
+  > div {
+    @apply flex items-center gap-2;
+
+    * {
+      @apply w-10 h-10 p-2.5 rounded-lg cursor-pointer select-none;
+
+      &:hover {
+        @apply bg-active-element-hover;
+      }
+    }
+  }
+}
+
+.cardCollapsed {
+  @apply rounded-b-none;
+}
+
+.restaurantDishes {
+  @apply border border-border border-t-0 p-3 px-5 rounded-b-xl flex items-stretch gap-6 overflow-x-auto;
+}
+
+.restaurantDishes::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.restaurantDishes::-webkit-scrollbar-thumb {
+  background-color: var(--placeholder);
+}
+
+.restaurantDishes::-webkit-scrollbar-track {
+  background-color: var(--border);
+}
+
+.restaurantDishCard {
+  @apply border border-border rounded-xl overflow-hidden w-fit min-w-[208px];
+
+  > .imageWrapper {
+    @apply h-40 w-52 overflow-hidden flex items-center justify-center;
+  }
+
+  > .dishCardContent {
+    @apply p-2 flex flex-col;
+
+    > h1 {
+      @apply text-lg font-semibold;
+    }
+
+    > span {
+      @apply text-sm text-subcolor;
+    }
+
+    > div {
+      @apply flex justify-between font-semibold;
+
+      > p {
+        > span {
+          @apply text-sm ml-1;
+        }
+      }
+
+      > .rating {
+        @apply flex items-center gap-1;
+      }
+    }
+  }
+}
+
+.addNewDishCard {
+  @apply w-[208px] min-h-[254px] border border-border rounded-xl flex flex-col items-center justify-center gap-3 cursor-pointer;
+
+  > div {
+    @apply bg-placeholder rounded-full p-3;
+
+    > svg {
+      @apply w-10 h-10 text-background;
+    }
+  }
+
+  > h1 {
+    @apply text-xl font-semibold;
+  }
+}
+
+.dialogFormWrapper {
+  @apply absolute top-0 left-0 h-screen w-screen z-50 flex justify-center items-center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  > .dialogForm {
+    @apply border border-border p-5 px-7 rounded-xl w-[450px] bg-background;
+
+    > h1 {
+      @apply text-center font-semibold text-2xl;
+    }
+
+    > .dialogFormInputs {
+      @apply my-4 flex flex-col gap-4;
+
+      > div {
+        @apply flex flex-col;
+
+        > label {
+          @apply text-sm text-placeholder;
+        }
+
+        > input {
+          @apply mt-1 rounded-lg outline-none border border-border bg-background p-1 px-3 text-lg focus:border-subcolor;
+        }
+
+        > textarea {
+          @apply mt-1 rounded-lg outline-none border border-border bg-background p-2 px-3 text-lg focus:border-subcolor min-h-32 max-h-80;
+        }
+
+        > select {
+          @apply mt-1 rounded-lg outline-none border border-border bg-background p-2 px-3 text-lg focus:border-subcolor;
+        }
+      }
+    }
+
+    > .dialogFormButtons {
+      @apply flex gap-2 justify-end;
+
+      > .cancelButton {
+        @apply text-app-text bg-active-element-hover;
+      }
+    }
+  }
+}

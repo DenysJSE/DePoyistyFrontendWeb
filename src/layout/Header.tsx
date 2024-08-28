@@ -1,16 +1,16 @@
 import styles from './Header.module.scss'
-import { Heart } from 'lucide-react'
+import { Heart, ShieldCheck } from 'lucide-react'
 import { useOutside } from '../hooks/useOutside.ts'
 import HeaderDropdown from '../components/HeaderDropdown.tsx'
 import Button from '../components/buttons/Button.tsx'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth.ts'
 
 function Header() {
 	const { isShow, setIsShow, ref } = useOutside(false)
 
 	const navigate = useNavigate()
-	const { user, logout, isAuthenticated } = useAuth()
+	const { user, logout, isAuthenticated, isAdmin } = useAuth()
 
 	const handleLogout = async () => {
 		logout()
@@ -26,6 +26,11 @@ function Header() {
 				<>
 					{user && (
 						<div className={styles.userNav}>
+							{isAdmin && (
+								<Link to='/admin'>
+									<ShieldCheck size={25} />
+								</Link>
+							)}
 							<Heart
 								style={{ cursor: 'pointer' }}
 								onClick={() => navigate('/favorite')}

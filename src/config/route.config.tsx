@@ -9,6 +9,7 @@ import AuthGoogleCallback from '../components/auth/AuthGoogleCallback.tsx'
 import Home from '../pages/Home.tsx'
 import Layout from '../layout/Layout.tsx'
 import DishCard from '../components/dish-card/DishCard.tsx'
+import AdminRestaurants from '../components/admin/restaurants/AdminRestaurants.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -60,6 +61,28 @@ export const router = createBrowserRouter([
 					<AdminPage />
 				</Layout>
 			</AdminPrivateRoute>
-		)
+		),
+		children: [
+			{
+				path: '/admin/restaurants',
+				element: <AdminRestaurants />
+			},
+			{
+				path: '/admin/dishes',
+				element: ''
+			},
+			{
+				path: '/admin/reviews',
+				element: ''
+			},
+			{
+				path: '/admin/categories',
+				element: ''
+			},
+			{
+				path: '/admin/users',
+				element: ''
+			}
+		]
 	}
 ])

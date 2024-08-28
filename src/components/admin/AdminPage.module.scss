@@ -1,0 +1,11 @@
+.adminPageHeader {
+  @apply flex items-center justify-between w-full;
+
+  > h1 {
+    @apply text-2xl font-semibold;
+  }
+
+  > .headerButton {
+    @apply relative pl-9 px-5;
+  }
+}

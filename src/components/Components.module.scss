@@ -1,0 +1,24 @@
+.dialogWrapper {
+  @apply absolute top-0 left-0 h-screen w-screen z-50 flex justify-center items-center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  > .dialog {
+    @apply border border-border p-5 px-7 rounded-xl flex flex-col gap-2 w-[500px] bg-background;
+
+    > h1 {
+      @apply font-semibold text-2xl;
+    }
+
+    > p {
+      @apply text-sm text-placeholder;
+    }
+
+    > div {
+      @apply ml-auto flex items-center gap-2 mt-2;
+
+      > .cancelButton {
+        @apply text-app-text bg-active-element-hover;
+      }
+    }
+  }
+}
