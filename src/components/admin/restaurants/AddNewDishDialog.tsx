@@ -18,10 +18,12 @@ function AddNewDishDialog({
 	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
 	const [dishPrice, setPrice] = useState('')
-	const [categoryId, setCategoryId] = useState<number>(1)
+	const [categoryId, setCategoryId] = useState<number>(0)
 	const queryClient = useQueryClient()
 
-	const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeValue = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
 		const { id, value } = event.target
 		switch (id) {
 			case 'restaurant-name':
@@ -32,6 +34,9 @@ function AddNewDishDialog({
 				break
 			case 'restaurant-price':
 				setPrice(value)
+				break
+			case 'categoryId':
+				setCategoryId(Number(value))
 				break
 		}
 	}
@@ -65,6 +70,8 @@ function AddNewDishDialog({
 	})
 
 	if (!categories) return null
+
+	console.log(categoryId)
 
 	return (
 		<section className='dialogFormWrapper'>
@@ -103,16 +110,16 @@ function AddNewDishDialog({
 					</div>
 					<div>
 						<label htmlFor='categoryId'>Category</label>
-						<select name='categories' id='categoryId'>
+						<select
+							name='categories'
+							id='categoryId'
+							onChange={handleChangeValue}
+						>
 							<option value='' disabled selected>
 								Select your option
 							</option>
 							{categories.map(category => (
-								<option
-									value={category.name.toLowerCase()}
-									onClick={() => setCategoryId(category.id)}
-									key={category.id}
-								>
+								<option value={category.id} key={category.id}>
 									{category.name}
 								</option>
 							))}
