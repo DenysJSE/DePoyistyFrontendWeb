@@ -8,6 +8,7 @@ interface IAdminPageHeader {
 	isButtonIcon?: boolean
 	buttonIcon?: ReactNode
 	buttonText?: string
+	onClick: () => void
 }
 
 function AdminPageHeader({
@@ -15,7 +16,8 @@ function AdminPageHeader({
 	isButton,
 	isButtonIcon,
 	buttonIcon,
-	buttonText
+	buttonText,
+	onClick
 }: IAdminPageHeader) {
 	return (
 		<div className={styles.adminPageHeader}>
@@ -25,6 +27,7 @@ function AdminPageHeader({
 					type='button'
 					size='small'
 					className={isButtonIcon ? styles.headerButton : ''}
+					onClick={onClick}
 				>
 					{isButtonIcon && buttonIcon}
 					{buttonText}

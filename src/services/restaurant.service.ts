@@ -21,10 +21,10 @@ export const restaurantService = {
 		return response.data
 	},
 
-	async createRestaurant(restaurantName: string) {
+	async createRestaurant(restaurantData: TUpdateRestaurant) {
 		const response = await axiosWithAuth.post<TRestaurant>(
 			'/restaurants',
-			restaurantName
+			restaurantData
 		)
 		return response.data
 	},

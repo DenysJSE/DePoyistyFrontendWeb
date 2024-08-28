@@ -6,8 +6,12 @@ import { useQuery } from '@tanstack/react-query'
 import { restaurantService } from '../../../services/restaurant.service.ts'
 import Loader from '../../Loader.tsx'
 import NotFoundPage from '../../../pages/NotFoundPage.tsx'
+import { useState } from 'react'
+import AddNewRestaurantCard from './AddNewRestaurantCard.tsx'
 
 function AdminRestaurants() {
+	const [isShowAddForm, setIsShowAddForm] = useState(false)
+
 	const { data: restaurants = [], status } = useQuery({
 		queryKey: ['restaurants'],
 		queryFn: () => restaurantService.getAllRestaurants()
@@ -24,6 +28,7 @@ function AdminRestaurants() {
 				isButtonIcon={true}
 				buttonIcon={<Plus className='w-5 absolute left-3 top-1.5' />}
 				buttonText='Add restaurant'
+				onClick={() => setIsShowAddForm(true)}
 			/>
 			<div className={styles.restaurantsList}>
 				{restaurants ? (
@@ -40,6 +45,9 @@ function AdminRestaurants() {
 					<h1>There is no restaurant</h1>
 				)}
 			</div>
+			{isShowAddForm && (
+				<AddNewRestaurantCard setIsShowAddForm={setIsShowAddForm} />
+			)}
 		</div>
 	)
 }
