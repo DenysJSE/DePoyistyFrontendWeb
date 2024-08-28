@@ -21,7 +21,7 @@ export const categoryService = {
 		return response.data
 	},
 
-	async createCategory(categoryName: string) {
+	async createCategory(categoryName: { name: string }) {
 		const response = await axiosWithAuth.post<TCategory>(
 			'/categories',
 			categoryName
@@ -29,7 +29,10 @@ export const categoryService = {
 		return response.data
 	},
 
-	async updateCategory(categoryId: number | string, categoryName: string) {
+	async updateCategory(
+		categoryId: number | string,
+		categoryName: { name: string }
+	) {
 		const response = await axiosWithAuth.put<TCategory>(
 			`/categories/${categoryId}`,
 			categoryName

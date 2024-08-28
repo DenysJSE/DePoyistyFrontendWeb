@@ -8,7 +8,7 @@ interface IAdminPageHeader {
 	isButtonIcon?: boolean
 	buttonIcon?: ReactNode
 	buttonText?: string
-	onClick: () => void
+	onClick?: () => void
 }
 
 function AdminPageHeader({

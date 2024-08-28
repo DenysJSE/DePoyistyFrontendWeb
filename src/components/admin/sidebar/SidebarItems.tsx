@@ -1,4 +1,4 @@
-import { LayoutList, Soup, Star, UserRound, Utensils } from 'lucide-react'
+import { LayoutList, Star, UserRound, Utensils } from 'lucide-react'
 
 export const SidebarItems = [
 	{
@@ -7,19 +7,14 @@ export const SidebarItems = [
 		link: '/admin/restaurants'
 	},
 	{
-		image: <Soup />,
-		title: 'Dishes',
-		link: '/admin/dishes'
+		image: <LayoutList />,
+		title: 'Categories',
+		link: '/admin/categories'
 	},
 	{
 		image: <Star />,
 		title: 'Reviews',
 		link: '/admin/reviews'
-	},
-	{
-		image: <LayoutList />,
-		title: 'Categories',
-		link: '/admin/categories'
 	},
 	{
 		image: <UserRound />,

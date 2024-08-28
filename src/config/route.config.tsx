@@ -10,6 +10,7 @@ import Home from '../pages/Home.tsx'
 import Layout from '../layout/Layout.tsx'
 import DishCard from '../components/dish-card/DishCard.tsx'
 import AdminRestaurants from '../components/admin/restaurants/AdminRestaurants.tsx'
+import AdminCategories from '../components/admin/categories/AdminCategories.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -68,15 +69,11 @@ export const router = createBrowserRouter([
 				element: <AdminRestaurants />
 			},
 			{
-				path: '/admin/dishes',
-				element: ''
+				path: '/admin/categories',
+				element: <AdminCategories />
 			},
 			{
 				path: '/admin/reviews',
-				element: ''
-			},
-			{
-				path: '/admin/categories',
 				element: ''
 			},
 			{
