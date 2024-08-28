@@ -1,4 +1,3 @@
-import styles from './AdminRestaurants.module.scss'
 import React, { useState } from 'react'
 import Button from '../../buttons/Button.tsx'
 import { dishService } from '../../../services/dish.service.ts'
@@ -68,10 +67,10 @@ function AddNewDishDialog({
 	if (!categories) return null
 
 	return (
-		<section className={styles.dialogFormWrapper}>
-			<div className={styles.dialogForm}>
+		<section className='dialogFormWrapper'>
+			<div className='dialogForm'>
 				<h1>Add new dish</h1>
-				<div className={styles.dialogFormInputs}>
+				<div className='dialogFormInputs'>
 					<div>
 						<label htmlFor='restaurant-name'>Dish name</label>
 						<input
@@ -120,11 +119,11 @@ function AddNewDishDialog({
 						</select>
 					</div>
 				</div>
-				<div className={styles.dialogFormButtons}>
+				<div className='dialogFormButtons'>
 					<Button
 						type='button'
 						size='small'
-						className={styles.cancelButton}
+						className='cancelButton'
 						onClick={cancelButtonAction}
 					>
 						Cancel

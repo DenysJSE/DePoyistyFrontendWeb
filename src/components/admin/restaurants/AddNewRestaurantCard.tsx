@@ -1,4 +1,3 @@
-import styles from './AdminRestaurants.module.scss'
 import React, { useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { restaurantService } from '../../../services/restaurant.service.ts'
@@ -38,10 +37,10 @@ function AddNewRestaurantCard({
 	}
 
 	return (
-		<section className={styles.dialogFormWrapper}>
-			<div className={styles.dialogForm}>
+		<section className='dialogFormWrapper'>
+			<div className='dialogForm'>
 				<h1>Add new restaurant</h1>
-				<div className={styles.dialogFormInputs}>
+				<div className='dialogFormInputs'>
 					<div>
 						<label htmlFor='restaurant-name'>Restaurant name</label>
 						<input
@@ -61,11 +60,11 @@ function AddNewRestaurantCard({
 						/>
 					</div>
 				</div>
-				<div className={styles.dialogFormButtons}>
+				<div className='dialogFormButtons'>
 					<Button
 						type='button'
 						size='small'
-						className={styles.cancelButton}
+						className='cancelButton'
 						onClick={handleCloseForm}
 					>
 						Cancel

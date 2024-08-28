@@ -1,4 +1,3 @@
-import styles from './AdminRestaurants.module.scss'
 import Button from '../../buttons/Button.tsx'
 import React, { useState } from 'react'
 import { restaurantService } from '../../../services/restaurant.service.ts'
@@ -44,10 +43,10 @@ function EditRestaurant({
 	}
 
 	return (
-		<section className={styles.dialogFormWrapper}>
-			<div className={styles.dialogForm}>
+		<section className='dialogFormWrapper'>
+			<div className='dialogForm'>
 				<h1>Edit restaurant</h1>
-				<div className={styles.dialogFormInputs}>
+				<div className='dialogFormInputs'>
 					<div>
 						<label htmlFor='restaurant-name'>Restaurant name</label>
 						<input
@@ -67,11 +66,11 @@ function EditRestaurant({
 						/>
 					</div>
 				</div>
-				<div className={styles.dialogFormButtons}>
+				<div className='dialogFormButtons'>
 					<Button
 						type='button'
 						size='small'
-						className={styles.cancelButton}
+						className='cancelButton'
 						onClick={cancelButtonAction}
 					>
 						Cancel

@@ -1,5 +1,5 @@
 import { axiosClassic, axiosWithAuth } from '../api/interceptor.ts'
-import { TCategory } from '../types/category.types.ts'
+import { TCategory, TUpdateCategory } from '../types/category.types.ts'
 
 export const categoryService = {
 	async getAllCategories() {
@@ -21,15 +21,18 @@ export const categoryService = {
 		return response.data
 	},
 
-	async createCategory(categoryName: string) {
+	async createCategory(categoryData: TUpdateCategory) {
 		const response = await axiosWithAuth.post<TCategory>(
 			'/categories',
-			categoryName
+			categoryData
 		)
 		return response.data
 	},
 
-	async updateCategory(categoryId: number | string, categoryName: string) {
+	async updateCategory(
+		categoryId: number | string,
+		categoryName: { name: string }
+	) {
 		const response = await axiosWithAuth.put<TCategory>(
 			`/categories/${categoryId}`,
 			categoryName
