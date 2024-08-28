@@ -31,6 +31,7 @@ function AdminRestaurants() {
 						<RestaurantCard
 							title={restaurant.name}
 							dishes={restaurant.menu}
+							restaurantId={restaurant.id}
 							key={restaurant.id}
 						/>
 					))
