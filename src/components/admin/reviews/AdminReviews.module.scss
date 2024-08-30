@@ -1,0 +1,70 @@
+.adminReviews {
+  > .reviewList {
+    @apply mt-6 flex flex-col gap-3;
+  }
+}
+
+.reviewDishCard {
+  @apply border border-border rounded-xl px-5 p-3 flex items-center gap-3;
+
+  > span {
+    @apply text-lg mt-0.5 text-subcolor;
+  }
+
+  > svg {
+    @apply ml-auto w-10 h-10 p-2.5 rounded-lg cursor-pointer select-none;
+
+    &:hover {
+      @apply bg-active-element-hover;
+    }
+  }
+}
+
+.cardCollapsed {
+  @apply rounded-b-none;
+}
+
+.dishReviews {
+  @apply border border-border border-t-0 p-3 px-5 rounded-b-xl flex items-stretch gap-6 overflow-x-auto;
+}
+
+.dishReviews::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.dishReviews::-webkit-scrollbar-thumb {
+  background-color: var(--placeholder);
+}
+
+.dishReviews::-webkit-scrollbar-track {
+  background-color: var(--border);
+}
+
+.reviewCard {
+  @apply border border-border p-2 px-4 rounded-lg min-w-80 max-w-80 min-h-32;
+
+  > div {
+    @apply flex items-center justify-between;
+
+    > .reviewCardTitle {
+      @apply text-2xl font-semibold;
+    }
+
+    > div {
+      @apply flex items-center gap-1;
+
+      > p {
+        @apply font-semibold;
+      }
+
+      > svg {
+        @apply w-5;
+      }
+    }
+  }
+
+  > p {
+    @apply text-base mt-2;
+  }
+}

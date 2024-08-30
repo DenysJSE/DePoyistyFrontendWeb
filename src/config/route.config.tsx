@@ -11,6 +11,7 @@ import Layout from '../layout/Layout.tsx'
 import DishCard from '../components/dish-card/DishCard.tsx'
 import AdminRestaurants from '../components/admin/restaurants/AdminRestaurants.tsx'
 import AdminCategories from '../components/admin/categories/AdminCategories.tsx'
+import AdminReviews from '../components/admin/reviews/AdminReviews.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -74,7 +75,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/admin/reviews',
-				element: ''
+				element: <AdminReviews />
 			},
 			{
 				path: '/admin/users',

@@ -1,4 +1,10 @@
-import { LayoutList, Star, UserRound, Utensils } from 'lucide-react'
+import {
+	ChartNoAxesColumn,
+	LayoutList,
+	Star,
+	UserRound,
+	Utensils
+} from 'lucide-react'
 
 export const SidebarItems = [
 	{
@@ -20,5 +26,10 @@ export const SidebarItems = [
 		image: <UserRound />,
 		title: 'Users',
 		link: '/admin/users'
+	},
+	{
+		image: <ChartNoAxesColumn />,
+		title: 'Stats',
+		link: '/admin/stats'
 	}
 ]
