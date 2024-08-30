@@ -3,14 +3,30 @@
   height: calc(100vh - var(--header-height));
 
   > .sidebarItem {
-    @apply flex items-center gap-2 p-2 px-4 rounded-xl cursor-pointer;
+    @apply flex items-center gap-2 p-2 px-4 rounded-xl relative;
+
+    > .itemTitle {
+      @apply flex relative;
+
+      > .soonLabel {
+        @apply text-xs p-0.5 px-2 bg-white text-black rounded-full absolute -top-1 -right-9;
+      }
+    }
 
     &.active {
       @apply bg-border;
     }
 
+    &.soon {
+      @apply text-placeholder opacity-50;
+
+      &:hover {
+        @apply bg-background cursor-default;
+      }
+    }
+
     &:hover {
-      @apply bg-border;
+      @apply bg-border cursor-pointer;
     }
   }
 }
