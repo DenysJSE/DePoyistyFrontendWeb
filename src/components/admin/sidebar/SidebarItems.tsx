@@ -10,26 +10,31 @@ export const SidebarItems = [
 	{
 		image: <Utensils />,
 		title: 'Restaurants',
-		link: '/admin/restaurants'
+		link: '/admin/restaurants',
+		created: true
 	},
 	{
 		image: <LayoutList />,
 		title: 'Categories',
-		link: '/admin/categories'
+		link: '/admin/categories',
+		created: true
 	},
 	{
 		image: <Star />,
 		title: 'Reviews',
-		link: '/admin/reviews'
+		link: '/admin/reviews',
+		created: true
 	},
 	{
 		image: <UserRound />,
 		title: 'Users',
-		link: '/admin/users'
+		link: '/admin/users',
+		created: false
 	},
 	{
 		image: <ChartNoAxesColumn />,
 		title: 'Stats',
-		link: '/admin/stats'
+		link: '/admin/stats',
+		created: false
 	}
 ]
